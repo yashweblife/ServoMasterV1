@@ -16,3 +16,21 @@
         }
     }
 }
+@media screen and (min-width:800px) {
+    .projectCard{
+        width:clamp(300px, 25%, 400px);
+        flex:1 auto;
+        >ion-card-header{
+            padding:0;
+            >ion-toolbar{
+                padding-right: 1em;
+                >ion-buttons{
+                    >ion-button{
+                        aspect-ratio: 1/1;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

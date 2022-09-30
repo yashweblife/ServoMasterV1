@@ -1,6 +1,7 @@
 .stepContainer{
     border-radius: 2em;
     box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
+    flex:1 auto;
     >ion-item{
         >ion-icon{
             margin-right: 1em;
@@ -25,5 +26,12 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (min-width:800px) {
+    .stepContainer{
+        width:clamp(300px, 30%, 400px);
+        margin:1em;
     }
 }

@@ -39,9 +39,27 @@ const EditorComponent:React.FC = ()=>{
               </IonFabButton>
             </IonFabList>
           </IonFab>
-          <IonAccordionGroup class="ion-padding">
+          {
+            (false) ?
+            <IonAccordionGroup class="ion-padding" className="stepList">
+            <StepComponent/>  
+            <StepComponent/>  
+            <StepComponent/>  
+            <StepComponent/>  
+            <StepComponent/>  
+            <StepComponent/>  
+            <StepComponent/>  
+            <StepComponent/>  
             <StepComponent/>  
           </IonAccordionGroup>
+            
+            : 
+          <div className="centerMessage">
+            <IonLabel color="primary">
+              Add a Step
+            </IonLabel>
+          </div>
+          }
         </IonContent>
       </IonPage>
     )

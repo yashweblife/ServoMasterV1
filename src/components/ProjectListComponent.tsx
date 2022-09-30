@@ -1,4 +1,4 @@
-import { IonPage, IonHeader, IonToolbar, IonIcon, IonTitle, IonContent, IonFab, IonFabButton, IonList, IonCard, IonCardHeader, IonButtons, IonButton } from "@ionic/react"
+import { IonPage, IonHeader, IonToolbar, IonIcon, IonTitle, IonContent, IonFab, IonFabButton, IonList, IonCard, IonCardHeader, IonButtons, IonButton, IonLabel } from "@ionic/react"
 import { listOutline, addOutline, trashOutline, playOutline, createOutline } from "ionicons/icons"
 import "./ProjectListComponent.scss"
 import ProjectComponent from "./ProjectComponent"
@@ -18,14 +18,19 @@ const ProjectListComponent:React.FC = ()=>{
             <IonIcon icon={addOutline}></IonIcon>
           </IonFabButton>
         </IonFab>
-        <IonList>
-          <ProjectComponent/>
-          <ProjectComponent/>
-          <ProjectComponent/>
-          <ProjectComponent/>
-          <ProjectComponent/>
-          <ProjectComponent/>
-        </IonList>
+        {
+          (false) ? 
+        
+          <IonList className="projectList">
+            <ProjectComponent/>              
+          </IonList>
+        :
+          <div className="centerMessage">
+            <IonLabel color="primary">
+              Add a Project
+            </IonLabel>
+          </div>
+        }
       </IonContent>
     </IonPage>
     )

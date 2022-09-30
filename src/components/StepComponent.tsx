@@ -3,13 +3,13 @@ import { closeOutline } from "ionicons/icons"
 import "./StepComponent.scss"
 const StepComponent:React.FC = ()=>{
     return(
-        (false)?
+        (true)?
         <IonAccordion class="ion-margin-bottom" className="stepContainer">
-        <IonItem slot="header">
+        <IonItem slot="header" lines="none">
           <IonIcon icon={closeOutline} color="primary"></IonIcon>
           <IonLabel>Step 1</IonLabel>
         </IonItem>
-        <IonItem slot="content" class="ion-">
+        <IonItem slot="content" lines="none">
           <IonList>
             <div>
               <IonLabel>Start</IonLabel>
@@ -40,11 +40,11 @@ const StepComponent:React.FC = ()=>{
         </IonAccordion>
         :
         <IonAccordion class="ion-margin-bottom" className="stepContainer">
-        <IonItem slot="header">
+        <IonItem slot="header" lines="none">
           <IonIcon icon={closeOutline} color="primary"></IonIcon>
           <IonLabel>Trigger</IonLabel>
         </IonItem>
-        <IonItem slot="content">
+        <IonItem slot="content" lines="none">
           <IonList>
             <div>
               <IonSegment>
