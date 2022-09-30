@@ -19,9 +19,17 @@ const ProjectListComponent:React.FC = ()=>{
           </IonFabButton>
         </IonFab>
         {
-          (false) ? 
+          (true) ? 
         
           <IonList className="projectList">
+            <ProjectComponent/>              
+            <ProjectComponent/>              
+            <ProjectComponent/>              
+            <ProjectComponent/>              
+            <ProjectComponent/>              
+            <ProjectComponent/>              
+            <ProjectComponent/>              
+            <ProjectComponent/>              
             <ProjectComponent/>              
           </IonList>
         :
