@@ -1,0 +1,7 @@
+{
+  "name": "servo-master",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
