@@ -18,12 +18,11 @@ Tab3 contains the app settings. Here the user can logout, delete account, delete
 - [ ] Create primary UI skelleton for Tabs
     - [X] Tab1
         - [X] Component Breakdown
-            - [X] ProjectList
-                - [X] ProjectComponent
-            - [X] Editor
-                - [X] StepCompoenet
-        - [ ] Add FAB functionality
-        - [ ] Add Style
+            - [X] ProjectList  [->](../components/ProjectListComponent.tsx)
+                - [X] ProjectComponent [->](../components/ProjectComponent.tsx)
+            - [X] Editor [->](../components/EditorComponent.tsx)
+                - [X] StepCompoenet [->](../components/StepComponent.tsx)
+        - [X] Add Style
     - [ ] Tab2
         - [ ] Component Breakdown
         - [ ] Import React Circular Progressbar
