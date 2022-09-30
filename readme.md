@@ -29,6 +29,18 @@ The user curates projects on the web/app interface and sees the output on the ha
 - The user can delete all projects
 - The user can delete all devices
 
+# Workflow
+- [X] Import Sass for styling
+- [ ] Configure firebase for the app.
+- [ ] Import Firebase
+- [X] Create app design on figma
+- [ ] Edit index.html to represent app intent
+- [ ] Edit capacitor details for icon/splash/App name
+- [ ] Decide on App Icon
+- [ ] Ready app for android build
+
+
+
 ## Next Up : [src folder explaination](./src/readme.md)
 ---
 ## Author

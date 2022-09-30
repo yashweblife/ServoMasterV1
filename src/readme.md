@@ -24,6 +24,13 @@ This file contains the router for navigation.
 
 This file contains the app and the global contexts
 
+
+# Workflow
+- [ ] Figure out how to execute the login workflow
+- [ ] Create plastic UI for experimental theme and UX
+- [ ] Add Firebase to project 
+- [ ] Figure out app workflow and wireframe layout
+
 ## Next Up [Components](./components/readme.md)
 ---
 ## Author
