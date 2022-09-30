@@ -1,0 +1,18 @@
+.projectCard{
+    border-radius: 3em;
+    padding:0;
+    box-shadow: 0 0 3em 0.1em rgba(0,0,0,0.5);
+    margin-bottom: 1em;
+    >ion-card-header{
+        padding:0;
+        >ion-toolbar{
+            padding-right: 1em;
+            >ion-buttons{
+                >ion-button{
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

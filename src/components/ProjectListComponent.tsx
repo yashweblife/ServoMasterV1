@@ -8,8 +8,8 @@ const ProjectListComponent:React.FC = ()=>{
     <IonPage>
       <IonHeader>
         <IonToolbar class="ion-padding-start">
-          <IonIcon icon={listOutline} slot="start"></IonIcon>
-          <IonTitle slot="end">Projects</IonTitle>
+          <IonIcon icon={listOutline} slot="start" color="primary"></IonIcon>
+          <IonTitle size="large" slot="end">Projects</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -19,6 +19,11 @@ const ProjectListComponent:React.FC = ()=>{
           </IonFabButton>
         </IonFab>
         <IonList>
+          <ProjectComponent/>
+          <ProjectComponent/>
+          <ProjectComponent/>
+          <ProjectComponent/>
+          <ProjectComponent/>
           <ProjectComponent/>
         </IonList>
       </IonContent>

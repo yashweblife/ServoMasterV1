@@ -4,9 +4,9 @@ import "./StepComponent.scss"
 const StepComponent:React.FC = ()=>{
     return(
         (false)?
-        <IonAccordion class="ion-margin-bottom">
+        <IonAccordion class="ion-margin-bottom" className="stepContainer">
         <IonItem slot="header">
-          <IonIcon icon={closeOutline}></IonIcon>
+          <IonIcon icon={closeOutline} color="primary"></IonIcon>
           <IonLabel>Step 1</IonLabel>
         </IonItem>
         <IonItem slot="content" class="ion-">
@@ -39,9 +39,9 @@ const StepComponent:React.FC = ()=>{
         </IonItem>
         </IonAccordion>
         :
-        <IonAccordion class="ion-margin-bottom">
+        <IonAccordion class="ion-margin-bottom" className="stepContainer">
         <IonItem slot="header">
-          <IonIcon icon={closeOutline}></IonIcon>
+          <IonIcon icon={closeOutline} color="primary"></IonIcon>
           <IonLabel>Trigger</IonLabel>
         </IonItem>
         <IonItem slot="content">

@@ -4,18 +4,18 @@ import "./ProjectComponent.scss"
 
 const ProjectComponent:React.FC = ()=>{
     return(
-        <IonCard>
+        <IonCard className="projectCard">
               <IonCardHeader>
                 <IonToolbar>
                   <IonTitle size='small' slot="start">Project 1</IonTitle>
                   <IonButtons slot="end">
-                    <IonButton fill="clear">
+                    <IonButton fill="solid" color="primary" shape="round">
                       <IonIcon icon={trashOutline}></IonIcon>
                     </IonButton>
-                    <IonButton fill="clear">
+                    <IonButton fill="solid" color="primary" shape="round">
                       <IonIcon icon={playOutline}></IonIcon>
                     </IonButton>
-                    <IonButton fill="clear">
+                    <IonButton fill="solid" color="primary" shape="round">
                       <IonIcon icon={createOutline}></IonIcon>
                     </IonButton>
                   </IonButtons>

@@ -9,32 +9,32 @@ const EditorComponent:React.FC = ()=>{
         <IonHeader>
           <IonToolbar>
             <IonButton slot="start" fill="clear">
-              <IonIcon icon={arrowBackOutline}></IonIcon>
+              <IonIcon color="primary" icon={arrowBackOutline}></IonIcon>
             </IonButton>
             <IonTitle slot="end">Editor</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
           <IonFab vertical='bottom' horizontal='end' slot='fixed'>
-            <IonFabButton>
+            <IonFabButton color="primary">
               <IonIcon icon={menuOutline}></IonIcon>
             </IonFabButton>
             <IonFabList side="start">
-              <IonFabButton>
+              <IonFabButton color="primary">
                 <IonIcon icon={addOutline}></IonIcon>
               </IonFabButton>
-              <IonFabButton>
+              <IonFabButton color="primary">
                 <IonIcon icon={addOutline}></IonIcon>
               </IonFabButton>
-              <IonFabButton>
+              <IonFabButton color="primary">
                 <IonIcon icon={addOutline}></IonIcon>
               </IonFabButton>
             </IonFabList>
             <IonFabList side="top">
-              <IonFabButton>
+              <IonFabButton color="primary">
                 <IonIcon icon={saveOutline}></IonIcon>
               </IonFabButton>
-              <IonFabButton>
+              <IonFabButton color="primary">
                 <IonIcon icon={trashOutline}></IonIcon>
               </IonFabButton>
             </IonFabList>
