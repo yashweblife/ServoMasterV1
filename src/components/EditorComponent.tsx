@@ -2,19 +2,38 @@ import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonConten
 import "./EditorComponent.scss"
 import { arrowBackOutline, menuOutline, addOutline, saveOutline, trashOutline, closeOutline } from "ionicons/icons"
 import StepComponent from "./StepComponent"
+import { useContext } from "react"
+import { ProjectListContext } from "../store/project-list-context"
 
 const EditorComponent:React.FC = ()=>{
+  const projectListContext = useContext(ProjectListContext)
+  const toProjectList = ()=>{
+    if(projectListContext){
+      projectListContext.close()
+    }
+  }
     return(
         <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonButton slot="start" fill="clear">
+            <IonButton slot="start" fill="clear" onClick={()=>{
+              toProjectList()
+            }}>
               <IonIcon color="primary" icon={arrowBackOutline}></IonIcon>
             </IonButton>
             <IonTitle slot="end">Editor</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
+          <IonHeader>
+            <IonToolbar>
+              <IonTitle>
+                {
+                  projectListContext&&projectListContext.current?.name
+                }
+              </IonTitle>
+            </IonToolbar>
+          </IonHeader>
           <IonFab vertical='bottom' horizontal='end' slot='fixed'>
             <IonFabButton color="primary">
               <IonIcon icon={menuOutline}></IonIcon>

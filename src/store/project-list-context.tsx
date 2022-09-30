@@ -18,9 +18,12 @@ export interface ProjectInterface{
 
 export interface ProjectListInterface{
     list:ProjectInterface[] | null,
+    size:number|null,
     add:(name:string, id:string)=>void,
     remove:(id:string)=>void,
-    open:(id:string)=>void
+    open:(id:string)=>void,
+    close:()=>void,
+    current:ProjectInterface|null
 }
 export const ProjectListContext=createContext<ProjectListInterface|null>(null)
 
@@ -29,7 +32,16 @@ export const ProjectListContextProvider = (props:any)=>{
     const [currentProject,setCurrentProject] = useState<ProjectInterface|null>(null)
     const add = (name:string, id:string)=>{
         if(list){
+            console.log(name)
             const arr = [...list]
+            arr.push({
+                name:name,
+                steps:[],
+                id:id
+            })
+            setList(arr)
+        }else{
+            const arr = []
             arr.push({
                 name:name,
                 steps:[],
@@ -52,12 +64,18 @@ export const ProjectListContextProvider = (props:any)=>{
             setCurrentProject(val);
         }
     }
+    const closeProject = ()=>{
+        setCurrentProject(null)
+    }
 
     const context:ProjectListInterface = {
         list:list,
+        size:list&&list.length,
         add:add,
         remove:remove,
-        open:openProject
+        open:openProject,
+        close:closeProject,
+        current:currentProject,
     }
     return(
         <ProjectListContext.Provider value={context}>{props.children}</ProjectListContext.Provider>
