@@ -1,9 +1,9 @@
 import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonContent, IonFab, IonFabButton, IonFabList, IonAccordionGroup, IonAccordion, IonItem, IonLabel, IonList, IonRange, IonSegment, IonSegmentButton } from "@ionic/react"
 import "./EditorComponent.scss"
-import { arrowBackOutline, menuOutline, addOutline, saveOutline, trashOutline, closeOutline } from "ionicons/icons"
+import { arrowBackOutline, menuOutline, addOutline, saveOutline, trashOutline, closeOutline, playOutline } from "ionicons/icons"
 import StepComponent from "./StepComponent"
 import { useContext } from "react"
-import { ProjectListContext } from "../store/project-list-context"
+import { ProjectListContext, StepInterface } from "../store/project-list-context"
 
 const EditorComponent:React.FC = ()=>{
   const projectListContext = useContext(ProjectListContext)
@@ -11,6 +11,14 @@ const EditorComponent:React.FC = ()=>{
     if(projectListContext){
       projectListContext.close()
     }
+  }
+  const addStep = ()=>{
+    if(projectListContext){
+      projectListContext.addStep()
+    }
+  }
+  const summarize = ()=>{
+    if(projectListContext){projectListContext.summarize()}
   }
     return(
         <IonPage>
@@ -39,7 +47,7 @@ const EditorComponent:React.FC = ()=>{
               <IonIcon icon={menuOutline}></IonIcon>
             </IonFabButton>
             <IonFabList side="start">
-              <IonFabButton color="primary">
+              <IonFabButton color="primary" onClick={addStep}>
                 <IonIcon icon={addOutline}></IonIcon>
               </IonFabButton>
               <IonFabButton color="primary">
@@ -56,21 +64,20 @@ const EditorComponent:React.FC = ()=>{
               <IonFabButton color="primary">
                 <IonIcon icon={trashOutline}></IonIcon>
               </IonFabButton>
+              <IonFabButton color="primary" onClick={()=>summarize}>
+                <IonIcon icon={playOutline}></IonIcon>
+              </IonFabButton>
             </IonFabList>
           </IonFab>
           {
-            (false) ?
+            (projectListContext?.current?.steps?.length) ?
             <IonAccordionGroup class="ion-padding" className="stepList">
-            <StepComponent/>  
-            <StepComponent/>  
-            <StepComponent/>  
-            <StepComponent/>  
-            <StepComponent/>  
-            <StepComponent/>  
-            <StepComponent/>  
-            <StepComponent/>  
-            <StepComponent/>  
-          </IonAccordionGroup>
+              {
+                projectListContext.current.steps.map((item:StepInterface, index:number)=>{
+                  return(<StepComponent index={index}/>)
+                })
+              }
+            </IonAccordionGroup>
             
             : 
           <div className="centerMessage">

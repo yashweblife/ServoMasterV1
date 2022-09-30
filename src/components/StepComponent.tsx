@@ -1,13 +1,26 @@
-import { IonAccordion, IonItem, IonIcon, IonLabel, IonList, IonRange, IonSegment, IonSegmentButton } from "@ionic/react"
+import { IonAccordion, IonItem, IonIcon, IonLabel, IonList, IonRange, IonSegment, IonSegmentButton, IonButton } from "@ionic/react"
 import { closeOutline } from "ionicons/icons"
+import { useContext } from "react"
+import { ProjectListContext } from "../store/project-list-context"
 import "./StepComponent.scss"
-const StepComponent:React.FC = ()=>{
+const StepComponent:React.FC<{index:number}> = ({index})=>{
+  const projectListContext = useContext(ProjectListContext)
+
+  const removeStep = (index:number)=>{
+    if(projectListContext){
+      projectListContext.removeStep(index)
+    }
+  }
     return(
         (true)?
         <IonAccordion class="ion-margin-bottom" className="stepContainer">
         <IonItem slot="header" lines="none">
+          <IonButton fill="clear" onClick={()=>{
+            removeStep(index)
+          }}>
           <IonIcon icon={closeOutline} color="primary"></IonIcon>
-          <IonLabel>Step 1</IonLabel>
+          </IonButton>
+          <IonLabel>Step {index+1}</IonLabel>
         </IonItem>
         <IonItem slot="content" lines="none">
           <IonList>

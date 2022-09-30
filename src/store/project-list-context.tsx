@@ -16,6 +16,22 @@ export interface ProjectInterface{
     id:string
 }
 
+function createStep():StepInterface{
+    return(
+        {
+
+            angle_end:0,
+            angle_start:0,
+            delay:1,
+            name:"Step 1",
+            servo:0,
+            size:1,
+            type:"step",
+        }
+    )
+}
+
+
 export interface ProjectListInterface{
     list:ProjectInterface[] | null,
     size:number|null,
@@ -23,6 +39,9 @@ export interface ProjectListInterface{
     remove:(id:string)=>void,
     open:(id:string)=>void,
     close:()=>void,
+    addStep:()=>void,
+    removeStep:(index:number)=>void,
+    summarize:()=>void,
     current:ProjectInterface|null
 }
 export const ProjectListContext=createContext<ProjectListInterface|null>(null)
@@ -67,7 +86,30 @@ export const ProjectListContextProvider = (props:any)=>{
     const closeProject = ()=>{
         setCurrentProject(null)
     }
-
+    const addStep = ()=>{
+        if(currentProject){
+            const c = {...currentProject}
+            c.steps.push(createStep())
+            setCurrentProject(c)
+        }
+    }
+    const removeStep = (index:number)=>{
+        if(currentProject){
+            const c = {...currentProject}
+            c.steps.splice(index, 1)
+            setCurrentProject(c)
+        }
+    }
+    const summarizeProject = ()=>{
+        if(currentProject){
+            const c = {...currentProject}
+            var op = ""
+            c.steps.forEach((item)=>{
+                op+= `${item.angle_end}|${item.angle_start}|${item.delay}|${item.servo}|${item.size}`
+            })
+            console.log(op)
+        }
+    }
     const context:ProjectListInterface = {
         list:list,
         size:list&&list.length,
@@ -75,6 +117,9 @@ export const ProjectListContextProvider = (props:any)=>{
         remove:remove,
         open:openProject,
         close:closeProject,
+        addStep:addStep,
+        removeStep:removeStep,
+        summarize:summarizeProject,
         current:currentProject,
     }
     return(
