@@ -15,7 +15,7 @@ Tab3 contains the app settings. Here the user can logout, delete account, delete
 
 
 # Workflow
-- [ ] Create primary UI for Tabs
-    - [ ] Tab1
+- [ ] Create primary UI skelleton for Tabs
+    - [X] Tab1
     - [ ] Tab2
     - [ ] Tab3
