@@ -65,7 +65,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "4.3.0"
+    "@capacitor/cli": "4.3.0",
+    "sass": "^1.55.0"
   },
   "description": "An Ionic project"
 }
