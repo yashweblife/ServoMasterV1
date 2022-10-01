@@ -15,7 +15,7 @@ Tab3 contains the app settings. Here the user can logout, delete account, delete
 
 
 # Workflow
-- [ ] Create primary UI skelleton for Tabs
+- [X] Create primary UI skelleton for Tabs
     - [X] Tab1
         - [X] Component Breakdown
             - [X] ProjectList  [->](../components/ProjectListComponent.tsx)
@@ -25,9 +25,8 @@ Tab3 contains the app settings. Here the user can logout, delete account, delete
         - [X] Add Style
     - [ ] Tab2
         - [ ] Component Breakdown
-        - [ ] Import React Circular Progressbar
-        - [ ] Add FAB functionality
-        - [ ] Add Style
+        - [X] Import React Circular Progressbar
+        - [X] Add Style
     - [ ] Tab3
         - [ ] Component Breakdown
         - [ ] Add Style
