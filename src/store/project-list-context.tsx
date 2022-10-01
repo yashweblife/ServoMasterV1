@@ -24,7 +24,7 @@ function createStep():StepInterface{
             angle_start:0,
             delay:1,
             name:"Step 1",
-            servo:0,
+            servo:1,
             size:1,
             type:"step",
         }
@@ -42,7 +42,8 @@ export interface ProjectListInterface{
     addStep:()=>void,
     removeStep:(index:number)=>void,
     summarize:()=>void,
-    current:ProjectInterface|null
+    current:ProjectInterface|null,
+    editStep:(index:number, type:number, value:any)=>void
 }
 export const ProjectListContext=createContext<ProjectListInterface|null>(null)
 
@@ -100,6 +101,17 @@ export const ProjectListContextProvider = (props:any)=>{
             setCurrentProject(c)
         }
     }
+    const editStep = (index:number, type:number, value:any)=>{
+        if(currentProject){
+            const c = {...currentProject}
+            if(type===0) c.steps[index].angle_start=value
+            if(type===1) c.steps[index].angle_end=value
+            if(type===2) c.steps[index].delay=value
+            if(type===3) c.steps[index].size=value
+            if(type===4) c.steps[index].servo = value
+            console.log(index, c.steps[index])
+        }
+    }
     const summarizeProject = ()=>{
         if(currentProject){
             const c = {...currentProject}
@@ -121,6 +133,7 @@ export const ProjectListContextProvider = (props:any)=>{
         removeStep:removeStep,
         summarize:summarizeProject,
         current:currentProject,
+        editStep:editStep
     }
     return(
         <ProjectListContext.Provider value={context}>{props.children}</ProjectListContext.Provider>

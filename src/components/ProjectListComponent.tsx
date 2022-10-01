@@ -51,7 +51,7 @@ const ProjectListComponent:React.FC = ()=>{
         
           <IonList className="projectList">
             {
-              projectListContext.list?.map((item:ProjectInterface)=><ProjectComponent data={item}></ProjectComponent>)
+              projectListContext.list?.map((item:ProjectInterface)=><ProjectComponent data={item} key={item.id}></ProjectComponent>)
             }          
           </IonList>
         :

@@ -4,8 +4,8 @@ This folder contains all the components for this app
 ## EditorContainer [->](./EditorComponent.tsx)
 This contains to editor view
 - [X] Add Style [->](./EditorComponent.scss)
-- [ ] Make Adding steps function
-- [ ] Make Delete step function
+- [X] Make Adding steps function
+- [X] Make Delete step function
 - [ ] Make Upload function
 - [ ] Make Save function
 - [ ] Make Delete function
@@ -13,7 +13,7 @@ This contains to editor view
 ### StepComponent [->](./StepComponent.tsx)
 This is a step
 - [X] Add Style [->](./StepComponent.scss)
-- [ ] Add delete handler
+- [X] Add delete handler
 ---
 ## ProjectListComponent  [->](./ProjectListComponent.tsx)
 This contains the project list view

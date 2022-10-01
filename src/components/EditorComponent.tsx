@@ -18,8 +18,15 @@ const EditorComponent:React.FC = ()=>{
     }
   }
   const summarize = ()=>{
-    if(projectListContext){projectListContext.summarize()}
+    if(projectListContext){
+      projectListContext.summarize()
+    }
   }
+  
+  const saveProject = ()=>{
+
+  }
+
     return(
         <IonPage>
         <IonHeader>
@@ -74,7 +81,7 @@ const EditorComponent:React.FC = ()=>{
             <IonAccordionGroup class="ion-padding" className="stepList">
               {
                 projectListContext.current.steps.map((item:StepInterface, index:number)=>{
-                  return(<StepComponent index={index}/>)
+                  return(<StepComponent index={index} data={item} key={index}/>)
                 })
               }
             </IonAccordionGroup>
