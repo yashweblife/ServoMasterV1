@@ -4,15 +4,18 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { ProjectListContextProvider } from './store/project-list-context';
+import { DeviceListContextProvider } from './store/device-list-context';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
-  <ProjectListContextProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ProjectListContextProvider>
+  <DeviceListContextProvider>
+    <ProjectListContextProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ProjectListContextProvider>
+  </DeviceListContextProvider>
 );
 
 // If you want your app to work offline and load faster, you can change
