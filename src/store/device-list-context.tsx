@@ -1,19 +1,9 @@
 import { createContext, useState } from "react";
-import { makeRandString } from "../utils/utils";
-
-export interface DeviceInterface {
-  name: string;
-  auth: string;
-  id: string;
-}
-
-export interface DeviceContextInterface {
-  list: DeviceInterface[];
-  size: number;
-  add: (name: string, auth: string) => void;
-  remove: (id: string) => void;
-  edit: (id: string, name: string, auth: string) => void;
-}
+import {
+  DeviceContextInterface,
+  DeviceInterface,
+  makeRandString,
+} from "../utils/utils";
 
 export const DeviceListContext = createContext<DeviceContextInterface | null>(
   null

@@ -1,46 +1,10 @@
 import { createContext, useState } from "react";
+import {
+  createStep,
+  ProjectInterface,
+  ProjectListInterface,
+} from "../utils/utils";
 
-export interface StepInterface {
-  angle_end: number;
-  angle_start: number;
-  delay: number;
-  name: string;
-  servo: number;
-  size: number;
-  type: string;
-}
-
-export interface ProjectInterface {
-  name: string;
-  steps: StepInterface[];
-  id: string;
-}
-
-function createStep(): StepInterface {
-  return {
-    angle_end: 0,
-    angle_start: 0,
-    delay: 1,
-    name: "Step 1",
-    servo: 1,
-    size: 1,
-    type: "step",
-  };
-}
-
-export interface ProjectListInterface {
-  list: ProjectInterface[] | null;
-  size: number | null;
-  add: (name: string, id: string) => void;
-  remove: (id: string) => void;
-  open: (id: string) => void;
-  close: () => void;
-  addStep: () => void;
-  removeStep: (index: number) => void;
-  summarize: () => void;
-  current: ProjectInterface | null;
-  editStep: (index: number, type: number, value: any) => void;
-}
 export const ProjectListContext = createContext<ProjectListInterface | null>(
   null
 );
