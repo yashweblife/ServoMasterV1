@@ -1,5 +1,11 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './Tab3.scss';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import "./Tab3.scss";
 
 const Tab3: React.FC = () => {
   return (
@@ -9,9 +15,7 @@ const Tab3: React.FC = () => {
           <IonTitle></IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-
-      </IonContent>
+      <IonContent fullscreen></IonContent>
     </IonPage>
   );
 };

@@ -1,12 +1,12 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
-import { ProjectListContextProvider } from './store/project-list-context';
-import { DeviceListContextProvider } from './store/device-list-context';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
+import { ProjectListContextProvider } from "./store/project-list-context";
+import { DeviceListContextProvider } from "./store/device-list-context";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container!);
 root.render(
   <DeviceListContextProvider>

@@ -1,19 +1,16 @@
-import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonChip, IonContent, IonFab, IonFabButton, IonFabList, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonPage, IonRange, IonSegment, IonSegmentButton, IonTitle, IonToolbar } from '@ionic/react';
-import { addOutline, arrowBackOutline, closeOutline, createOutline, listOutline, menuOutline, playOutline, saveOutline, trashOutline } from 'ionicons/icons';
-import { useContext } from 'react';
-import EditorComponent from '../components/EditorComponent';
-import ProjectListComponent from '../components/ProjectListComponent';
-import { ProjectListContext } from '../store/project-list-context';
-import './Tab1.scss';
+import { useContext } from "react";
+import EditorComponent from "../components/EditorComponent";
+import ProjectListComponent from "../components/ProjectListComponent";
+import { ProjectListContext } from "../store/project-list-context";
+import "./Tab1.scss";
 
 const Tab1: React.FC = () => {
-  const projectListContext = useContext(ProjectListContext)
+  const projectListContext = useContext(ProjectListContext);
 
-  return (
-    (projectListContext && projectListContext.current==null) ? 
-    <ProjectListComponent/>
-    :
-    <EditorComponent/>
+  return projectListContext && projectListContext.current == null ? (
+    <ProjectListComponent />
+  ) : (
+    <EditorComponent />
   );
 };
 
