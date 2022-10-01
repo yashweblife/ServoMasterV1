@@ -21,10 +21,8 @@ import {
   trashOutline,
 } from "ionicons/icons";
 import { useContext } from "react";
-import {
-  ProjectListContext,
-  StepInterface,
-} from "../store/project-list-context";
+import { ProjectListContext } from "../store/project-list-context";
+import { StepInterface } from "../utils/utils";
 import "./EditorComponent.scss";
 import StepComponent from "./StepComponent";
 

@@ -13,11 +13,8 @@ import {
 } from "@ionic/react";
 import { addOutline, listOutline } from "ionicons/icons";
 import { useContext } from "react";
-import {
-  ProjectInterface,
-  ProjectListContext,
-} from "../store/project-list-context";
-import { makeRandString } from "../utils/utils";
+import { ProjectListContext } from "../store/project-list-context";
+import { makeRandString, ProjectInterface } from "../utils/utils";
 import ProjectComponent from "./ProjectComponent";
 import "./ProjectListComponent.scss";
 

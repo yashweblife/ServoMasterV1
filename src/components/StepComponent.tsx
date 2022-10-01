@@ -11,10 +11,8 @@ import {
 } from "@ionic/react";
 import { closeOutline } from "ionicons/icons";
 import { useContext, useRef } from "react";
-import {
-  ProjectListContext,
-  StepInterface,
-} from "../store/project-list-context";
+import { ProjectListContext } from "../store/project-list-context";
+import { StepInterface } from "../utils/utils";
 import "./StepComponent.scss";
 
 const StepComponent: React.FC<{ index: number; data: StepInterface }> = ({

@@ -9,10 +9,8 @@ import {
 } from "@ionic/react";
 import { trashOutline, playOutline, createOutline } from "ionicons/icons";
 import { useContext } from "react";
-import {
-  ProjectInterface,
-  ProjectListContext,
-} from "../store/project-list-context";
+import { ProjectListContext } from "../store/project-list-context";
+import { ProjectInterface } from "../utils/utils";
 import "./ProjectComponent.scss";
 
 const ProjectComponent: React.FC<{ data: ProjectInterface }> = ({ data }) => {
