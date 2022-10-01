@@ -1,0 +1,9 @@
+.deviceListCard{
+    border-radius: 2em;
+    ion-list{
+        padding:0;
+    }
+    >ion-card-content{
+        padding:0;
+    }
+}

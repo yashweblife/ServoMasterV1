@@ -10,7 +10,7 @@ export const ProjectListContext = createContext<ProjectListInterface | null>(
 );
 
 export const ProjectListContextProvider = (props: any) => {
-  const [list, setList] = useState<ProjectInterface[] | null>(null);
+  const [list, setList] = useState<ProjectInterface[]>([]);
   const [currentProject, setCurrentProject] = useState<ProjectInterface | null>(
     null
   );
@@ -88,7 +88,7 @@ export const ProjectListContextProvider = (props: any) => {
   };
   const context: ProjectListInterface = {
     list: list,
-    size: list && list.length,
+    size: list.length,
     add: add,
     remove: remove,
     open: openProject,

@@ -23,8 +23,8 @@ export const DeviceListContextProvider = (props: any) => {
   };
   const remove = (id: string) => {
     const arr = [...list];
-    arr.filter((item: DeviceInterface) => item.id != id);
-    setList(arr);
+    const op = arr.filter((item: DeviceInterface) => item.id != id);
+    setList(op);
   };
   const edit = (id: string, name: string, auth: string) => {
     const arr = [...list];

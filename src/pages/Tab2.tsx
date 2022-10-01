@@ -8,10 +8,12 @@ import {
   IonHeader,
   IonIcon,
   IonItem,
+  IonLabel,
   IonList,
   IonPage,
   IonTitle,
   IonToolbar,
+  useIonAlert,
 } from "@ionic/react";
 import {
   addOutline,
@@ -20,11 +22,20 @@ import {
   personOutline,
   trashOutline,
 } from "ionicons/icons";
+import { useContext } from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import DeviceComponent from "../components/DeviceComponent";
+import DeviceListComponent from "../components/DeviceListComponent";
+import { DeviceListContext } from "../store/device-list-context";
+import { ProjectListContext } from "../store/project-list-context";
+import { DeviceInterface, makeRandString } from "../utils/utils";
 import "./Tab2.scss";
 
 const Tab2: React.FC = () => {
+  const projectListContext = useContext(ProjectListContext)
+  const deviceListContext = useContext(DeviceListContext)
+  console.log(projectListContext?.size)
   return (
     <IonPage>
       <IonHeader>
@@ -41,131 +52,41 @@ const Tab2: React.FC = () => {
             <IonCard className="progressCard">
               <IonCardContent>
                 <CircularProgressbar
-                  value={1}
+                  value={(projectListContext && projectListContext.size) ? projectListContext.size : 0}
                   minValue={0}
                   maxValue={50}
-                  text={`${0} ${false ? "Projects" : "Project"}`}
+                  text={`${(projectListContext && projectListContext.size) ? projectListContext.size : 0} ${false ? "Projects" : "Project"}`}
                   styles={buildStyles({
                     pathColor: "#50FFC0",
                     trailColor: "#1f2e39",
                     textColor: "#50FFC0",
-                    textSize: "10px",
+                    textSize: "12px",
                     strokeLinecap: "round",
                   })}
                 />
               </IonCardContent>
 
-              <IonCard></IonCard>
             </IonCard>
             <IonCard className="progressCard">
               <IonCardContent>
                 <CircularProgressbar
-                  value={1}
+                  value={(deviceListContext && deviceListContext.size) ? deviceListContext.size : 0}
                   minValue={0}
                   maxValue={50}
-                  text={`${0} ${false ? "Projects" : "Project"}`}
+                  text={`${(deviceListContext && deviceListContext.size) ? deviceListContext.size : 0} ${false ? "Devices" : "Device"}`}
                   styles={buildStyles({
                     pathColor: "#50FFC0",
                     trailColor: "#1f2e39",
                     textColor: "#50FFC0",
-                    textSize: "10px",
+                    textSize: "12px",
                     strokeLinecap: "round",
                   })}
                 />
               </IonCardContent>
-
-              <IonCard></IonCard>
             </IonCard>
           </IonItem>
         </IonList>
-        <IonList>
-          <IonCard>
-            <IonCardHeader>
-              <IonToolbar>
-                <IonTitle slot="start">Devices</IonTitle>
-                <IonButton slot="end" fill="clear">
-                  <IonIcon icon={addOutline}></IonIcon>
-                </IonButton>
-              </IonToolbar>
-            </IonCardHeader>
-            <IonCardContent>
-              <IonList>
-                <IonCard>
-                  <IonCardHeader>
-                    <IonToolbar>
-                      <IonTitle slot="start">Device 1</IonTitle>
-                      <IonButtons slot="end">
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={pencilOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={eyeOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={trashOutline}></IonIcon>
-                        </IonButton>
-                      </IonButtons>
-                    </IonToolbar>
-                  </IonCardHeader>
-                </IonCard>
-                <IonCard>
-                  <IonCardHeader>
-                    <IonToolbar>
-                      <IonTitle slot="start">Device 1</IonTitle>
-                      <IonButtons slot="end">
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={pencilOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={eyeOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={trashOutline}></IonIcon>
-                        </IonButton>
-                      </IonButtons>
-                    </IonToolbar>
-                  </IonCardHeader>
-                </IonCard>
-                <IonCard>
-                  <IonCardHeader>
-                    <IonToolbar>
-                      <IonTitle slot="start">Device 1</IonTitle>
-                      <IonButtons slot="end">
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={pencilOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={eyeOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={trashOutline}></IonIcon>
-                        </IonButton>
-                      </IonButtons>
-                    </IonToolbar>
-                  </IonCardHeader>
-                </IonCard>
-                <IonCard>
-                  <IonCardHeader>
-                    <IonToolbar>
-                      <IonTitle slot="start">Device 1</IonTitle>
-                      <IonButtons slot="end">
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={pencilOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={eyeOutline}></IonIcon>
-                        </IonButton>
-                        <IonButton fill="solid" shape="round" color="primary">
-                          <IonIcon icon={trashOutline}></IonIcon>
-                        </IonButton>
-                      </IonButtons>
-                    </IonToolbar>
-                  </IonCardHeader>
-                </IonCard>
-              </IonList>
-            </IonCardContent>
-          </IonCard>
-        </IonList>
+        <DeviceListComponent/>
       </IonContent>
     </IonPage>
   );
