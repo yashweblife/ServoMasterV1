@@ -38,7 +38,7 @@ export const DeviceListContextProvider = (props:any)=>{
         const arr = [...list]
         const data = arr.filter((item:DeviceInterface)=>item.id===id)[0]
         if(data){
-            data.name = name,
+            data.name = name
             data.auth = auth
         }
     }
