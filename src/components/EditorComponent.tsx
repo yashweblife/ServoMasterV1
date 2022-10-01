@@ -9,6 +9,8 @@ import {
   IonIcon,
   IonLabel,
   IonPage,
+  IonSelect,
+  IonSelectOption,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -21,13 +23,15 @@ import {
   trashOutline,
 } from "ionicons/icons";
 import { useContext } from "react";
+import { DeviceListContext } from "../store/device-list-context";
 import { ProjectListContext } from "../store/project-list-context";
-import { StepInterface } from "../utils/utils";
+import { DeviceInterface, StepInterface } from "../utils/utils";
 import "./EditorComponent.scss";
 import StepComponent from "./StepComponent";
 
 const EditorComponent: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
+  const deviceListContext = useContext(DeviceListContext)
   const toProjectList = () => {
     if (projectListContext) {
       projectListContext.close();
@@ -65,9 +69,14 @@ const EditorComponent: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>
+            <IonTitle slot="start">
               {projectListContext && projectListContext.current?.name}
             </IonTitle>
+            <IonSelect placeholder="Select A Device" slot="end">
+              {
+                deviceListContext && deviceListContext.list.map((item:DeviceInterface)=><IonSelectOption value={item.auth}>{item.name}</IonSelectOption>)
+              }
+            </IonSelect>
           </IonToolbar>
         </IonHeader>
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
