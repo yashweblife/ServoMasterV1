@@ -23,11 +23,12 @@ Tab3 contains the app settings. Here the user can logout, delete account, delete
             - [X] Editor [->](../components/EditorComponent.tsx)
                 - [X] StepCompoenet [->](../components/StepComponent.tsx)
         - [X] Add Style
-    - [ ] Tab2
-        - [ ] Component Breakdown
-            -[ ] DeviceComponent [->](../components/DeviceComponent.tsx)
+    - [X] Tab2
+        - [X] Component Breakdown
+            -[X] DeviceComponent [->](../components/DeviceComponent.tsx)
+            -[X] DeviceListComponent [->](../components/DeviceListComponent.tsx)
         - [X] Import React Circular Progressbar
         - [X] Add Style
-    - [ ] Tab3
-        - [ ] Component Breakdown
-        - [ ] Add Style
+    - [X] Tab3
+        - [X] Component Breakdown
+        - [X] Add Style
