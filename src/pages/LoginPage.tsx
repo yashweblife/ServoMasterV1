@@ -2,72 +2,19 @@ import { IonPage, IonContent, IonCard, IonCardHeader, IonToolbar, IonTitle, IonL
 import "./LoginPage.scss"
 import { useContext, useState } from "react"
 import { UserContext } from "../store/user-context"
+import LoginComponent from "../components/LoginComponent"
+import SignupComponent from "../components/SignupComponent"
 const LoginPage:React.FC = ()=>{
     const [isLogin, setIsLogin] = useState<Boolean>(true)
     const userContext = useContext(UserContext)
-    const handleLogin = ()=>{
-        userContext?.login()
-    }
     return(
         <IonPage>
             <IonContent className="authPage" fullscreen>
                 {
                     (isLogin)?                
-                    <IonCard className="authBox">
-                        <IonCardHeader>
-                            <IonToolbar>
-                                <IonTitle>Login</IonTitle>
-                            </IonToolbar>
-                        </IonCardHeader>
-                        <IonCardContent>
-                            <IonList>
-                                <IonItem>
-                                    <IonLabel slot="floating"></IonLabel>
-                                    <IonInput>Enter Email</IonInput>
-                                </IonItem>
-                                <IonItem>
-                                    <IonLabel slot="floating"></IonLabel>
-                                    <IonInput>Enter Password</IonInput>
-                                </IonItem>
-                                <IonItem>
-                                    <IonButtons>    
-                                        <IonButton fill="solid" color="primary" onClick={handleLogin}>Enter</IonButton>
-                                        <IonButton fill="solid" color="primary" onClick={()=>{setIsLogin(false)}}>Create An Account</IonButton>
-                                    </IonButtons>
-                                </IonItem>
-                            </IonList>
-                        </IonCardContent>
-                    </IonCard>
+                    <LoginComponent switcher={()=>{setIsLogin(false)}}/>
                     :
-                    <IonCard className="authBox">
-                        <IonCardHeader>
-                            <IonToolbar>
-                                <IonTitle>Create An Account</IonTitle>
-                            </IonToolbar>
-                        </IonCardHeader>
-                        <IonCardContent>
-                            <IonList>
-                                <IonItem>
-                                    <IonLabel slot="floating"></IonLabel>
-                                    <IonInput>Enter Email</IonInput>
-                                </IonItem>
-                                <IonItem>
-                                    <IonLabel slot="floating"></IonLabel>
-                                    <IonInput>Enter Password</IonInput>
-                                </IonItem>
-                                <IonItem>
-                                    <IonLabel slot="floating"></IonLabel>
-                                    <IonInput>Confirm Password</IonInput>
-                                </IonItem>
-                                <IonItem>
-                                    <IonButtons>    
-                                        <IonButton fill="solid" color="primary">Enter</IonButton>
-                                        <IonButton fill="solid" color="primary" onClick={()=>{setIsLogin(true)}}>Login Instead</IonButton>
-                                    </IonButtons>
-                                </IonItem>
-                            </IonList>
-                        </IonCardContent>
-                    </IonCard>
+                    <SignupComponent switcher={()=>{setIsLogin(true)}}/>
                 }
             </IonContent>
         </IonPage>
