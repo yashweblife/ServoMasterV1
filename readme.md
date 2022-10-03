@@ -37,7 +37,7 @@ The user curates projects on the web/app interface and sees the output on the ha
 - [X] Edit index.html to represent app intent
 - [ ] Edit capacitor details for icon/splash/App name
 - [ ] Decide on App Icon
-- [ ] Ready app for android build
+- [X] Ready app for android build
 
 
 

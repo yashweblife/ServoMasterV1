@@ -29,3 +29,14 @@ This is a project card
 - [ ] Add upload handler
 - [X] Add Open In Editor handler
 ---
+
+## DeviceListComponent [->](./DeviceListComponent.tsx)
+This contains the device list view
+- [X] Add style [->](./DeviceListComponent.scss)
+- [X] Add Add Functionality
+- [X] Add Delete Functionality
+- [X] Add Edit Functionality
+
+### DeviceComponent [->](./DeviceComponent.tsx)
+This is the device card
+- [X] Add style [->](./DeviceComponent.scss)

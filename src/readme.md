@@ -31,6 +31,7 @@ This file contains the app and the global contexts
 - [ ] Add Firebase to project 
 - [X] Figure out app workflow and wireframe layout
 
+
 ## Next Up [Components](./components/readme.md)
 ---
 ## Author

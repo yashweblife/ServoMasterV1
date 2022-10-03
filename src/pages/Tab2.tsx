@@ -48,7 +48,7 @@ const Tab2: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          <IonItem lines="none">
+          <IonItem lines="none" className="progressItem">
             <IonCard className="progressCard">
               <IonCardContent>
                 <CircularProgressbar
