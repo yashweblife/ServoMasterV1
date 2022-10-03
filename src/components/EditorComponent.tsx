@@ -13,6 +13,7 @@ import {
   IonSelectOption,
   IonTitle,
   IonToolbar,
+  SelectChangeEventDetail,
 } from "@ionic/react";
 import {
   addOutline,
@@ -25,7 +26,7 @@ import {
   saveOutline,
   trashOutline,
 } from "ionicons/icons";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { DeviceListContext } from "../store/device-list-context";
 import { ProjectListContext } from "../store/project-list-context";
 import { DeviceInterface, StepInterface } from "../utils/utils";
@@ -35,6 +36,7 @@ import StepComponent from "./StepComponent";
 const EditorComponent: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
   const deviceListContext = useContext(DeviceListContext);
+  const [device, setDevice] = useState<string>("")
   const toProjectList = () => {
     if (projectListContext) {
       projectListContext.close();
@@ -47,7 +49,10 @@ const EditorComponent: React.FC = () => {
   };
   const summarize = () => {
     if (projectListContext) {
-      projectListContext.summarize();
+      if(device){
+        console.log("Device Selected: ")
+        projectListContext.summarize(projectListContext.current?.id, device);
+      }
     }
   };
 
@@ -85,10 +90,10 @@ const EditorComponent: React.FC = () => {
             <IonTitle slot="start">
               {projectListContext && projectListContext.current?.name}
             </IonTitle>
-            <IonSelect placeholder="Select A Device" slot="end">
+            <IonSelect placeholder="Select A Device" slot="end" onIonChange={(e:any)=>{setDevice(e.detail.value)}}>
               {deviceListContext &&
-                deviceListContext.list.map((item: DeviceInterface) => (
-                  <IonSelectOption value={item.auth}>
+                deviceListContext.list.map((item: DeviceInterface, index:number) => (
+                  <IonSelectOption value={item.auth} key={index}>
                     {item.name}
                   </IonSelectOption>
                 ))}
@@ -117,7 +122,7 @@ const EditorComponent: React.FC = () => {
             <IonFabButton color="primary" onClick={deleteProject}>
               <IonIcon icon={trashOutline}></IonIcon>
             </IonFabButton>
-            <IonFabButton color="primary" onClick={() => summarize}>
+            <IonFabButton color="primary" onClick={summarize}>
               <IonIcon icon={playOutline}></IonIcon>
             </IonFabButton>
           </IonFabList>

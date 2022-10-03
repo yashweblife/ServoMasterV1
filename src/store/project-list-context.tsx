@@ -18,8 +18,9 @@ import {
   db,
   ProjectInterface,
   ProjectListInterface,
+  rtdb,
 } from "../utils/utils";
-
+import {set, ref} from 'firebase/database'
 export const ProjectListContext = createContext<ProjectListInterface | null>(
   null
 );
@@ -103,6 +104,7 @@ export const ProjectListContextProvider = (props: any) => {
       deleteDoc(ref)
         .then(() => {
           console.log("Deleted " + id);
+          closeProject()
         })
         .catch((err: Error) => {
           console.log(err.message);
@@ -145,14 +147,29 @@ export const ProjectListContextProvider = (props: any) => {
       console.log(index, c.steps[index]);
     }
   };
-  const summarizeProject = () => {
-    if (currentProject) {
-      const c = { ...currentProject };
-      var op = "";
-      c.steps.forEach((item) => {
-        op += `${item.angle_end}|${item.angle_start}|${item.delay}|${item.servo}|${item.size}`;
-      });
-      console.log(op);
+  const summarizeProject = (id?:string|null, device?:string|null) => {
+    var op = "";
+    if(id){
+      if(list){
+        const arr = [...list];
+        const val = arr.filter((item: ProjectInterface) => item.id == id)[0];
+        val.steps.forEach((item) => {
+          op += `${item.angle_end},${item.angle_start},${item.delay},${item.servo},${item.size}|`;
+        });
+      }
+    }else{
+      if (currentProject) {
+        const c = { ...currentProject };
+        c.steps.forEach((item) => {
+          op += `${item.angle_end}|${item.angle_start}|${item.delay}|${item.servo}|${item.size}`;
+        });
+      }
+    }
+    if(op == "") return;
+    if(device){
+      set(ref(rtdb, device),op)
+    }else{
+      console.log("No Device Selected")
     }
   };
   const saveProject = () => {
@@ -165,6 +182,7 @@ export const ProjectListContextProvider = (props: any) => {
         currentProject.id
       );
       updateDoc(ref, {
+        
         steps: currentProject.steps,
       })
         .then(() => {

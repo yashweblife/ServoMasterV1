@@ -25,6 +25,9 @@ const ProjectComponent: React.FC<{ data: ProjectInterface }> = ({ data }) => {
       projectListContext.remove(data.id);
     }
   };
+  const summarize = ()=>{
+    projectListContext?.summarize(data.id)
+  }
   return (
     <IonCard className="projectCard">
       <IonCardHeader>
@@ -41,7 +44,7 @@ const ProjectComponent: React.FC<{ data: ProjectInterface }> = ({ data }) => {
             >
               <IonIcon icon={trashOutline}></IonIcon>
             </IonButton>
-            <IonButton fill="solid" color="primary" shape="round">
+            <IonButton fill="solid" color="primary" shape="round" onClick={summarize}>
               <IonIcon icon={playOutline}></IonIcon>
             </IonButton>
             <IonButton
