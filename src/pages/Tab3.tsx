@@ -13,9 +13,16 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { exitOutline, settingsOutline, trashOutline } from "ionicons/icons";
+import { useContext } from "react";
+import { UserContext } from "../store/user-context";
 import "./Tab3.scss";
 
 const Tab3: React.FC = () => {
+  const userContext = useContext(UserContext)
+  const handleLogout = ()=>{
+    userContext?.logout()
+  }
+  const handleDeleteAccount = ()=>{}
   return (
     <IonPage>
       <IonHeader>
@@ -37,7 +44,7 @@ const Tab3: React.FC = () => {
                 <IonIcon icon={trashOutline}></IonIcon>
                 <IonLabel>Delete Account</IonLabel>
               </IonButton>
-              <IonButton shape="round" color="primary">
+              <IonButton shape="round" color="primary" onClick={handleLogout}>
                 <IonIcon icon={exitOutline}></IonIcon>
                 <IonLabel>Logout</IonLabel>
               </IonButton>

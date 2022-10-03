@@ -3,7 +3,7 @@ import "./LoginPage.scss"
 import { useContext, useState } from "react"
 import { UserContext } from "../store/user-context"
 const LoginPage:React.FC = ()=>{
-    const [isLogin, setIsLogin] = useState<Boolean>(false)
+    const [isLogin, setIsLogin] = useState<Boolean>(true)
     const userContext = useContext(UserContext)
     const handleLogin = ()=>{
         userContext?.login()
