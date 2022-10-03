@@ -41,15 +41,13 @@ export const UserContextProvider = (props: any) => {
         console.log("Logged In");
       })
       .catch((err: Error) => {
-        console.log(err.message);
-        alert({
-          header:err.message,
-          buttons:[{text:"Confirm"}]
-        })
+        alert(err.message.split("/")[1].replace("-"," "))
       });
   };
   const logoutUser = () => {
-    signOut(auth);
+    signOut(auth).then(()=>{}).catch((err:Error)=>{
+      alert(err.message.split("/")[1].replace("-"," "))
+    })
   };
   const createUser = (email: string, pass: string, conf: string) => {
     if (email == "") {
@@ -112,7 +110,7 @@ export const UserContextProvider = (props: any) => {
         createUserDB()
       })
       .catch((err: Error) => {
-        console.log(err.message);
+        alert(err.message.split("/")[1].replace("-"," "))
       });
   };
   const createUserDB = ()=>{
@@ -126,7 +124,11 @@ export const UserContextProvider = (props: any) => {
         addDoc(pref,{
           name:"Your First Project",
           steps:[]
+        }).catch((err:Error)=>{
+          alert(err.message.split("/")[1].replace("-"," "))
         })
+      }).catch((err:Error)=>{
+        alert(err.message.split("/")[1].replace("-"," "))
       })
     }
   }
@@ -152,9 +154,15 @@ export const UserContextProvider = (props: any) => {
           }
         }).then(()=>{
           if(auth.currentUser){
-            deleteUser(auth.currentUser)
+            deleteUser(auth.currentUser).then().catch((err:Error)=>{
+              alert(err.message.split("/")[1].replace("-"," "))
+            })
           }
+        }).catch((err:Error)=>{
+          alert(err.message.split("/")[1].replace("-"," "))
         })
+      }).catch((err:Error)=>{
+        alert(err.message.split("/")[1].replace("-"," "))
       })
     }
   };

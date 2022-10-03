@@ -124,7 +124,9 @@ export const ProjectListContextProvider = (props: any) => {
       })
     }).then(()=>{
       toast({
-        message:"Deleted All Projects"
+        message:"Deleted All Projects",
+        duration:1500,
+        position:"top"
       })
     })
   }
