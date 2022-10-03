@@ -1,3 +1,21 @@
+import { initializeApp } from "firebase/app";
+import {getFirestore} from 'firebase/firestore'
+import {getAuth} from 'firebase/auth'
+const firebaseConfig = {
+  apiKey: "AIzaSyD5bEzobmbOhp0ABY3hMpftthLC7UdDyb0",
+  authDomain: "servomasterdev.firebaseapp.com",
+  databaseURL: "https://servomasterdev-default-rtdb.firebaseio.com",
+  projectId: "servomasterdev",
+  storageBucket: "servomasterdev.appspot.com",
+  messagingSenderId: "225136072285",
+  appId: "1:225136072285:web:c1c1ee99386f4016199fb4"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app)
+const db = getFirestore(app)
+
+
 /**
  * * Returns a random string of specified size with default size of 10
  * @param  {number=10} size
