@@ -16,7 +16,10 @@ import {
 } from "@ionic/react";
 import {
   addOutline,
+  alarmOutline,
   arrowBackOutline,
+  bulbOutline,
+  footstepsOutline,
   menuOutline,
   playOutline,
   saveOutline,
@@ -48,7 +51,17 @@ const EditorComponent: React.FC = () => {
     }
   };
 
-  const saveProject = () => {};
+  const saveProject = () => {
+    if(projectListContext){
+      projectListContext.save();
+    }
+  };
+
+  const deleteProject = ()=>{
+    if(projectListContext && projectListContext.current){
+      projectListContext.remove(projectListContext.current.id)
+    }
+  }
 
   return (
     <IonPage>
@@ -88,20 +101,20 @@ const EditorComponent: React.FC = () => {
           </IonFabButton>
           <IonFabList side="start">
             <IonFabButton color="primary" onClick={addStep}>
-              <IonIcon icon={addOutline}></IonIcon>
+              <IonIcon icon={footstepsOutline}></IonIcon>
             </IonFabButton>
             <IonFabButton color="primary">
-              <IonIcon icon={addOutline}></IonIcon>
+              <IonIcon icon={alarmOutline}></IonIcon>
             </IonFabButton>
             <IonFabButton color="primary">
-              <IonIcon icon={addOutline}></IonIcon>
+              <IonIcon icon={bulbOutline}></IonIcon>
             </IonFabButton>
           </IonFabList>
           <IonFabList side="top">
-            <IonFabButton color="primary">
+            <IonFabButton color="primary" onClick={saveProject}>
               <IonIcon icon={saveOutline}></IonIcon>
             </IonFabButton>
-            <IonFabButton color="primary">
+            <IonFabButton color="primary" onClick={deleteProject}>
               <IonIcon icon={trashOutline}></IonIcon>
             </IonFabButton>
             <IonFabButton color="primary" onClick={() => summarize}>

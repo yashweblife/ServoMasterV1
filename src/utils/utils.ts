@@ -96,6 +96,7 @@ export interface ProjectListInterface {
   addStep: () => void;
   removeStep: (index: number) => void;
   summarize: () => void;
+  save:()=>void
   current: ProjectInterface | null;
   editStep: (index: number, type: number, value: any) => void;
 }

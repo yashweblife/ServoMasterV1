@@ -1,3 +1,5 @@
+import { present } from "@ionic/core/dist/types/utils/overlays";
+import { useIonToast } from "@ionic/react";
 import { onAuthStateChanged } from "firebase/auth";
 import {
   addDoc,
@@ -24,6 +26,7 @@ export const ProjectListContext = createContext<ProjectListInterface | null>(
 
 export const ProjectListContextProvider = (props: any) => {
   const [list, setList] = useState<ProjectInterface[]>([]);
+  const [toast] = useIonToast()
   const [currentProject, setCurrentProject] = useState<ProjectInterface | null>(
     null
   );
@@ -164,7 +167,13 @@ export const ProjectListContextProvider = (props: any) => {
       updateDoc(ref, {
         steps: currentProject.steps,
       })
-        .then(() => {})
+        .then(() => {
+          toast({
+            message:"Project Saved",
+            duration:1500,
+            position:"bottom"
+          })
+        })
         .catch((err: Error) => {
           console.log(err.message);
         });
@@ -182,6 +191,7 @@ export const ProjectListContextProvider = (props: any) => {
     summarize: summarizeProject,
     current: currentProject,
     editStep: editStep,
+    save:saveProject,
   };
   return (
     <ProjectListContext.Provider value={context}>
