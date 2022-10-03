@@ -11,9 +11,21 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import { useContext, useRef } from "react";
+import { UserContext } from "../store/user-context";
 
 const SignupComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
-  const handleSignup = () => {};
+  const userContext = useContext(UserContext)
+  const emailRef = useRef<HTMLIonInputElement>(null)
+  const passRef = useRef<HTMLIonInputElement>(null)
+  const confRef = useRef<HTMLIonInputElement>(null)
+  const handleSignup = () => {
+    if(userContext){
+      if(emailRef.current && passRef.current && confRef.current){
+        userContext.create(""+emailRef.current.value,""+ passRef.current.value,""+ confRef.current.value)
+      }
+    }
+  };
   return (
     <IonCard className="authBox">
       <IonCardHeader>
@@ -24,20 +36,20 @@ const SignupComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
       <IonCardContent>
         <IonList>
           <IonItem>
-            <IonLabel position="floating"></IonLabel>
-            <IonInput>Enter Email</IonInput>
+            <IonLabel position="floating">Enter Email</IonLabel>
+            <IonInput ref={emailRef}></IonInput>
           </IonItem>
           <IonItem>
-            <IonLabel position="floating"></IonLabel>
-            <IonInput>Enter Password</IonInput>
+            <IonLabel position="floating">Enter Password</IonLabel>
+            <IonInput ref={passRef}></IonInput>
           </IonItem>
           <IonItem>
-            <IonLabel position="floating"></IonLabel>
-            <IonInput>Confirm Password</IonInput>
+            <IonLabel position="floating">Confirm Password</IonLabel>
+            <IonInput ref={confRef}></IonInput>
           </IonItem>
           <IonItem>
             <IonButtons>
-              <IonButton fill="solid" color="primary">
+              <IonButton fill="solid" color="primary" onClick={handleSignup}>
                 Enter
               </IonButton>
               <IonButton fill="solid" color="primary" onClick={switcher}>

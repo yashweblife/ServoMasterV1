@@ -37,15 +37,13 @@ const LoginComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
       <IonCardContent>
         <IonList>
           <IonItem>
-            <IonLabel position="floating"></IonLabel>
+            <IonLabel position="floating">Enter Username</IonLabel>
             <IonInput type="email" ref={emailRef}>
-              Enter Email
             </IonInput>
           </IonItem>
           <IonItem>
-            <IonLabel position="floating"></IonLabel>
+            <IonLabel position="floating">Enter Password</IonLabel>
             <IonInput type="password" ref={passRef}>
-              Enter Password
             </IonInput>
           </IonItem>
           <IonItem>

@@ -6,14 +6,16 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
-import { auth, makeRandString } from "../utils/utils";
+import { auth, db, makeRandString } from "../utils/utils";
 
 interface UserInterface {
   loginState: Boolean;
   currentUserId: string;
   login: (email: string, pass: string) => void;
   logout: () => void;
+  create:(email:string,pass:string,conf:string)=>void
 }
 
 const UserContext = createContext<UserInterface | null>(null);
@@ -80,11 +82,28 @@ export const UserContextProvider = (props: any) => {
       return;
     }
     createUserWithEmailAndPassword(auth, email, pass)
-      .then()
+      .then(()=>{
+        createUserDB()
+      })
       .catch((err: Error) => {
         console.log(err.message);
       });
   };
+  const createUserDB = ()=>{
+    if(auth.currentUser){
+      const ref = doc(db, "users", auth.currentUser.uid)
+      const pref = collection(ref,"project_list")
+      const dref = collection(ref,"device_list")
+      setDoc(ref,{
+        email:auth.currentUser.email
+      }).then(()=>{
+        addDoc(pref,{
+          name:"Your First Project",
+          steps:[]
+        })
+      })
+    }
+  }
   const editUser = () => {};
   const deleteCurrentUser = () => {
     if (auth.currentUser) {
@@ -97,6 +116,7 @@ export const UserContextProvider = (props: any) => {
     currentUserId: makeRandString(),
     login: loginUser,
     logout: logoutUser,
+    create:createUser
   };
   return (
     <UserContext.Provider value={context}>
