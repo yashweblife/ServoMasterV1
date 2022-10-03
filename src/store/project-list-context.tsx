@@ -111,7 +111,23 @@ export const ProjectListContextProvider = (props: any) => {
         });
     }
   };
-
+  const removeAll = ()=>{
+    const ref = collection(
+      db,
+      "users",
+      "" + auth.currentUser?.uid,
+      "project_list"
+    );
+    getDocs(ref).then((snap:QuerySnapshot)=>{
+      snap.forEach((d:DocumentData)=>{
+        remove(d.id)
+      })
+    }).then(()=>{
+      toast({
+        message:"Deleted All Projects"
+      })
+    })
+  }
   const openProject = (id: string) => {
     if (list) {
       const arr = [...list];
@@ -210,6 +226,7 @@ export const ProjectListContextProvider = (props: any) => {
     current: currentProject,
     editStep: editStep,
     save:saveProject,
+    deleteAll:removeAll
   };
   return (
     <ProjectListContext.Provider value={context}>

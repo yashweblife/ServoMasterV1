@@ -100,6 +100,7 @@ export interface ProjectListInterface {
   save:()=>void
   current: ProjectInterface | null;
   editStep: (index: number, type: number, value: any) => void;
+  deleteAll:()=>void
 }
 
 /**
@@ -126,4 +127,5 @@ export interface DeviceContextInterface {
   add: (name: string, auth: string) => void;
   remove: (id: string) => void;
   edit: (id: string, name: string, auth: string) => void;
+  deleteAll:()=>void
 }

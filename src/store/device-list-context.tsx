@@ -1,3 +1,4 @@
+import { useIonToast } from "@ionic/react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addDoc, collection, deleteDoc, doc, DocumentData, getDocs, QuerySnapshot, updateDoc } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
@@ -15,6 +16,7 @@ export const DeviceListContext = createContext<DeviceContextInterface | null>(
 
 export const DeviceListContextProvider = (props: any) => {
   const [list, setList] = useState<DeviceInterface[]>([]);
+  const [toast] = useIonToast()
   useEffect(()=>{
     onAuthStateChanged(auth, ()=>{
       if(auth.currentUser){
@@ -68,6 +70,23 @@ export const DeviceListContextProvider = (props: any) => {
       deleteDoc(ref).then(()=>{}).catch((err:Error)=>{console.log(err.message)})
     }
   };
+  const removeAll = ()=>{
+    const ref = collection(
+      db,
+      "users",
+      "" + auth.currentUser?.uid,
+      "device_list"
+    );
+    getDocs(ref).then((snap:QuerySnapshot)=>{
+      snap.forEach((d:DocumentData)=>{
+        remove(d.id)
+      })
+    }).then(()=>{
+      toast({
+        message:"Deleted All Projects"
+      })
+    })
+  }
   const edit = (id: string, name: string, authCode: string) => {
     const arr = [...list];
     const data = arr.filter((item: DeviceInterface) => item.id === id)[0];
@@ -90,6 +109,7 @@ export const DeviceListContextProvider = (props: any) => {
     add: add,
     remove: remove,
     edit: edit,
+    deleteAll:removeAll
   };
 
   return (

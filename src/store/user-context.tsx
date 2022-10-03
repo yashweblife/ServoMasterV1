@@ -15,7 +15,8 @@ interface UserInterface {
   currentUserId: string;
   login: (email: string, pass: string) => void;
   logout: () => void;
-  create:(email:string,pass:string,conf:string)=>void
+  create:(email:string,pass:string,conf:string)=>void,
+  delete:()=>void
 }
 
 const UserContext = createContext<UserInterface | null>(null);
@@ -60,6 +61,17 @@ export const UserContextProvider = (props: any) => {
       return;
     }
     if (pass == "") {
+      alert({
+        header: "Enter A Password",
+        buttons: [
+          {
+            text: "Confirm",
+          },
+        ],
+      });
+      return;
+    }
+    if(pass.length<8){
       alert({
         header: "Enter A Password",
         buttons: [
@@ -116,7 +128,8 @@ export const UserContextProvider = (props: any) => {
     currentUserId: makeRandString(),
     login: loginUser,
     logout: logoutUser,
-    create:createUser
+    create:createUser,
+    delete:deleteCurrentUser
   };
   return (
     <UserContext.Provider value={context}>
