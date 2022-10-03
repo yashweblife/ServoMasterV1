@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from 'firebase/firestore'
-import {getAuth} from 'firebase/auth'
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyD5bEzobmbOhp0ABY3hMpftthLC7UdDyb0",
   authDomain: "servomasterdev.firebaseapp.com",
@@ -8,13 +8,12 @@ const firebaseConfig = {
   projectId: "servomasterdev",
   storageBucket: "servomasterdev.appspot.com",
   messagingSenderId: "225136072285",
-  appId: "1:225136072285:web:c1c1ee99386f4016199fb4"
+  appId: "1:225136072285:web:c1c1ee99386f4016199fb4",
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app)
-export const db = getFirestore(app)
-
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 /**
  * * Returns a random string of specified size with default size of 10
@@ -105,7 +104,7 @@ export interface ProjectListInterface {
  * * name: string;
  * * auth: string;
  * * id: string;
-*/
+ */
 export interface DeviceInterface {
   name: string;
   auth: string;
@@ -118,7 +117,7 @@ export interface DeviceInterface {
  * * add: (name: string, auth: string) => void;
  * * remove: (id: string) => void;
  * * edit: (id: string, name: string, auth: string) => void;
-*/
+ */
 export interface DeviceContextInterface {
   list: DeviceInterface[];
   size: number;

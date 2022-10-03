@@ -33,7 +33,7 @@ export const DeviceListContextProvider = (props: any) => {
       data.name = name;
       data.auth = auth;
     }
-    setList(arr)
+    setList(arr);
   };
   const context = {
     list: list,

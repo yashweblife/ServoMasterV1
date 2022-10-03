@@ -1,13 +1,13 @@
 import {
+  IonButton,
+  IonButtons,
   IonCard,
   IonCardHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonButton,
   IonIcon,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-import { trashOutline, playOutline, createOutline } from "ionicons/icons";
+import { createOutline, playOutline, trashOutline } from "ionicons/icons";
 import { useContext } from "react";
 import { ProjectListContext } from "../store/project-list-context";
 import { ProjectInterface } from "../utils/utils";

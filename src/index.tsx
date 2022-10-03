@@ -1,11 +1,11 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import { ProjectListContextProvider } from "./store/project-list-context";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { DeviceListContextProvider } from "./store/device-list-context";
-import { UserContext, UserContextProvider } from "./store/user-context";
+import { ProjectListContextProvider } from "./store/project-list-context";
+import { UserContextProvider } from "./store/user-context";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
@@ -19,7 +19,6 @@ root.render(
       </ProjectListContextProvider>
     </DeviceListContextProvider>
   </UserContextProvider>
-
 );
 
 // If you want your app to work offline and load faster, you can change

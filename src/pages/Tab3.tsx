@@ -2,7 +2,6 @@ import {
   IonAccordion,
   IonAccordionGroup,
   IonButton,
-  IonChip,
   IonContent,
   IonHeader,
   IonIcon,
@@ -18,11 +17,11 @@ import { UserContext } from "../store/user-context";
 import "./Tab3.scss";
 
 const Tab3: React.FC = () => {
-  const userContext = useContext(UserContext)
-  const handleLogout = ()=>{
-    userContext?.logout()
-  }
-  const handleDeleteAccount = ()=>{}
+  const userContext = useContext(UserContext);
+  const handleLogout = () => {
+    userContext?.logout();
+  };
+  const handleDeleteAccount = () => {};
   return (
     <IonPage>
       <IonHeader>

@@ -31,7 +31,7 @@ import StepComponent from "./StepComponent";
 
 const EditorComponent: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
-  const deviceListContext = useContext(DeviceListContext)
+  const deviceListContext = useContext(DeviceListContext);
   const toProjectList = () => {
     if (projectListContext) {
       projectListContext.close();
@@ -73,9 +73,12 @@ const EditorComponent: React.FC = () => {
               {projectListContext && projectListContext.current?.name}
             </IonTitle>
             <IonSelect placeholder="Select A Device" slot="end">
-              {
-                deviceListContext && deviceListContext.list.map((item:DeviceInterface)=><IonSelectOption value={item.auth}>{item.name}</IonSelectOption>)
-              }
+              {deviceListContext &&
+                deviceListContext.list.map((item: DeviceInterface) => (
+                  <IonSelectOption value={item.auth}>
+                    {item.name}
+                  </IonSelectOption>
+                ))}
             </IonSelect>
           </IonToolbar>
         </IonHeader>
