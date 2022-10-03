@@ -3,13 +3,14 @@ import { makeRandString } from "../utils/utils";
 
 
 interface UserInterface{
+    loginState:Boolean
     currentUserId:string;
     login:()=>void;
     logout:()=>void;
 }
 
 
-export const UserContext = createContext<UserInterface|null>(null)
+const UserContext = createContext<UserInterface|null>(null)
 
 export const UserContextProvider = (props:any)=>{
 
@@ -26,6 +27,7 @@ export const UserContextProvider = (props:any)=>{
     const deleteUser = ()=>{}
 
     const context = {
+        loginState:isLoggedIn,
         currentUserId:makeRandString(),
         login:loginUser,
         logout:logoutUser,
@@ -36,3 +38,5 @@ export const UserContextProvider = (props:any)=>{
         </UserContext.Provider>
     )
 }
+
+export {UserContext}

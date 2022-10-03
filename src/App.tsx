@@ -1,4 +1,3 @@
-import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -7,10 +6,11 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
-  setupIonicReact,
+  setupIonicReact
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, listOutline, personOutline, settingsOutline, square, triangle } from "ionicons/icons";
+import { listOutline, personOutline, settingsOutline } from "ionicons/icons";
+import { Redirect, Route } from "react-router-dom";
 import Tab1 from "./pages/Tab1";
 import Tab2 from "./pages/Tab2";
 import Tab3 from "./pages/Tab3";
@@ -24,53 +24,64 @@ import "@ionic/react/css/structure.css";
 import "@ionic/react/css/typography.css";
 
 /* Optional CSS utils that can be commented out */
-import "@ionic/react/css/padding.css";
+import "@ionic/react/css/display.css";
+import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/padding.css";
 import "@ionic/react/css/text-alignment.css";
 import "@ionic/react/css/text-transformation.css";
-import "@ionic/react/css/flex-utils.css";
-import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import { useContext } from "react";
+import { UserContext } from "./store/user-context";
+import LoginPage from "./pages/LoginPage";
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={listOutline} />
-            <IonLabel>Projects</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={personOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={settingsOutline} />
-            <IonLabel>Settigns</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const userContext = useContext(UserContext)
+  return(
+      <IonApp>
+        {
+          (userContext?.loginState == true)?
+            <IonReactRouter>
+              <IonTabs>
+                <IonRouterOutlet>
+                  <Route exact path="/tab1">
+                    <Tab1 />
+                  </Route>
+                  <Route exact path="/tab2">
+                    <Tab2 />
+                  </Route>
+                  <Route path="/tab3">
+                    <Tab3 />
+                  </Route>
+                  <Route exact path="/">
+                    <Redirect to="/tab1" />
+                  </Route>
+                </IonRouterOutlet>
+                <IonTabBar slot="bottom">
+                  <IonTabButton tab="tab1" href="/tab1">
+                    <IonIcon icon={listOutline} />
+                    <IonLabel>Projects</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="tab2" href="/tab2">
+                    <IonIcon icon={personOutline} />
+                    <IonLabel>Profile</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="tab3" href="/tab3">
+                    <IonIcon icon={settingsOutline} />
+                    <IonLabel>Settigns</IonLabel>
+                  </IonTabButton>
+                </IonTabBar>
+              </IonTabs>
+            </IonReactRouter>
+          :
+            <LoginPage/>
+        }
+      </IonApp>
+  );
+}
 
 export default App;
