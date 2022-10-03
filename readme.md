@@ -36,7 +36,7 @@ The user curates projects on the web/app interface and sees the output on the ha
 - [X] Create app design on figma
 - [X] Edit index.html to represent app intent
 - [X] Edit capacitor details for icon/splash/App name
-- [ ] Decide on App Icon
+- [X] Decide on App Icon
 - [X] Ready app for android build
 
 
