@@ -1,6 +1,10 @@
-import { createContext, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { addDoc, collection, deleteDoc, doc, DocumentData, getDocs, QuerySnapshot, updateDoc } from "firebase/firestore";
+import { createContext, useEffect, useState } from "react";
 import {
+  auth,
   createStep,
+  db,
   ProjectInterface,
   ProjectListInterface,
 } from "../utils/utils";
@@ -14,30 +18,64 @@ export const ProjectListContextProvider = (props: any) => {
   const [currentProject, setCurrentProject] = useState<ProjectInterface | null>(
     null
   );
-  const add = (name: string, id: string) => {
-    if (list) {
-      console.log(name);
-      const arr = [...list];
-      arr.push({
-        name: name,
-        steps: [],
-        id: id,
-      });
-      setList(arr);
-    } else {
-      const arr = [];
-      arr.push({
-        name: name,
-        steps: [],
-        id: id,
-      });
-      setList(arr);
+  useEffect(()=>{
+    onAuthStateChanged(auth,()=>{
+      if(auth.currentUser){
+        getAllProjects()
+      }
+    })
+  },[])
+  const getAllProjects = ()=>{
+    if(auth.currentUser){
+      const ref = collection(db, "users", auth.currentUser.uid, "project_list")
+      getDocs(ref).then((snap:QuerySnapshot)=>{
+        const arr:ProjectInterface[] = []
+        snap.docs.forEach((d:DocumentData)=>{
+          const t = {
+            id:d.id,
+            name:d.data().name,
+            steps:d.data().steps
+          }
+          arr.push(t)
+        })
+        setList(arr)
+      })
     }
+  }
+  const add = (name: string, id: string) => {
+    const ref = collection(db, "users", ""+auth.currentUser?.uid, "project_list")
+    addDoc(ref,{
+      name:name,
+      steps:[]
+    }).then((data:DocumentData)=>{
+      if (list) {
+        console.log(name);
+        const arr = [...list];
+        arr.push({
+          name: name,
+          steps: [],
+          id: data.id,
+        });
+        setList(arr);
+      } else {
+        const arr = [];
+        arr.push({
+          name: name,
+          steps: [],
+          id: data.id,
+        });
+        setList(arr);
+      }
+    }).catch((err:Error)=>{
+      console.log(err.message)
+    })
   };
   const remove = (id: string) => {
     if (list) {
       const arr = list?.filter((item: ProjectInterface) => item.id != id);
       setList(arr);
+      const ref = doc(db, "users", ""+auth.currentUser?.uid, "project_list", id)
+      deleteDoc(ref).then(()=>{console.log("Deleted "+id)}).catch((err:Error)=>{console.log(err.message)})
     }
   };
 
@@ -86,6 +124,14 @@ export const ProjectListContextProvider = (props: any) => {
       console.log(op);
     }
   };
+  const saveProject = ()=>{
+    if(currentProject){
+      const ref = doc(db, "users", ""+auth.currentUser?.uid, "project_list", currentProject.id)
+      updateDoc(ref,{
+        steps:currentProject.steps
+      }).then(()=>{}).catch((err:Error)=>{console.log(err.message)})
+    }
+  }
   const context: ProjectListInterface = {
     list: list,
     size: list.length,
