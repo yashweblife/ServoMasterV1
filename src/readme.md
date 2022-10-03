@@ -26,9 +26,9 @@ This file contains the app and the global contexts
 
 
 # Workflow
-- [ ] Figure out how to execute the login workflow
+- [X] Figure out how to execute the login workflow
 - [X] Create plastic UI for experimental theme and UX
-- [ ] Add Firebase to project 
+- [X] Add Firebase to project 
 - [X] Figure out app workflow and wireframe layout
 
 
