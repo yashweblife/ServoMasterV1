@@ -43,7 +43,7 @@ const App: React.FC = () => {
   const userContext = useContext(UserContext);
   return (
     <IonApp>
-      {userContext?.loginState == true ? (
+      {userContext?.loginState === true ? (
         <IonReactRouter>
           <IonTabs>
             <IonRouterOutlet>

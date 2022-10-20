@@ -1,6 +1,6 @@
-import { present } from "@ionic/core/dist/types/utils/overlays";
 import { useIonToast } from "@ionic/react";
 import { onAuthStateChanged } from "firebase/auth";
+import { ref, set } from "firebase/database";
 import {
   addDoc,
   collection,
@@ -20,14 +20,13 @@ import {
   ProjectListInterface,
   rtdb,
 } from "../utils/utils";
-import {set, ref} from 'firebase/database'
 export const ProjectListContext = createContext<ProjectListInterface | null>(
   null
 );
 
 export const ProjectListContextProvider = (props: any) => {
   const [list, setList] = useState<ProjectInterface[]>([]);
-  const [toast] = useIonToast()
+  const [toast] = useIonToast();
   const [currentProject, setCurrentProject] = useState<ProjectInterface | null>(
     null
   );
@@ -92,7 +91,7 @@ export const ProjectListContextProvider = (props: any) => {
   };
   const remove = (id: string) => {
     if (list) {
-      const arr = list?.filter((item: ProjectInterface) => item.id != id);
+      const arr = list?.filter((item: ProjectInterface) => item.id !== id);
       setList(arr);
       const ref = doc(
         db,
@@ -104,36 +103,38 @@ export const ProjectListContextProvider = (props: any) => {
       deleteDoc(ref)
         .then(() => {
           console.log("Deleted " + id);
-          closeProject()
+          closeProject();
         })
         .catch((err: Error) => {
           console.log(err.message);
         });
     }
   };
-  const removeAll = ()=>{
+  const removeAll = () => {
     const ref = collection(
       db,
       "users",
       "" + auth.currentUser?.uid,
       "project_list"
     );
-    getDocs(ref).then((snap:QuerySnapshot)=>{
-      snap.forEach((d:DocumentData)=>{
-        remove(d.id)
+    getDocs(ref)
+      .then((snap: QuerySnapshot) => {
+        snap.forEach((d: DocumentData) => {
+          remove(d.id);
+        });
       })
-    }).then(()=>{
-      toast({
-        message:"Deleted All Projects",
-        duration:1500,
-        position:"top"
-      })
-    })
-  }
+      .then(() => {
+        toast({
+          message: "Deleted All Projects",
+          duration: 1500,
+          position: "top",
+        });
+      });
+  };
   const openProject = (id: string) => {
     if (list) {
       const arr = [...list];
-      const val = arr.filter((item: ProjectInterface) => item.id == id)[0];
+      const val = arr.filter((item: ProjectInterface) => item.id === id)[0];
       setCurrentProject(val);
     }
   };
@@ -165,17 +166,17 @@ export const ProjectListContextProvider = (props: any) => {
       console.log(index, c.steps[index]);
     }
   };
-  const summarizeProject = (id?:string|null, device?:string|null) => {
+  const summarizeProject = (id?: string | null, device?: string | null) => {
     var op = "";
-    if(id){
-      if(list){
+    if (id) {
+      if (list) {
         const arr = [...list];
-        const val = arr.filter((item: ProjectInterface) => item.id == id)[0];
+        const val = arr.filter((item: ProjectInterface) => item.id === id)[0];
         val.steps.forEach((item) => {
           op += `${item.angle_end},${item.angle_start},${item.delay},${item.servo},${item.size}|`;
         });
       }
-    }else{
+    } else {
       if (currentProject) {
         const c = { ...currentProject };
         c.steps.forEach((item) => {
@@ -183,11 +184,11 @@ export const ProjectListContextProvider = (props: any) => {
         });
       }
     }
-    if(op == "") return;
-    if(device){
-      set(ref(rtdb, device),op)
-    }else{
-      console.log("No Device Selected")
+    if (op === "") return;
+    if (device) {
+      set(ref(rtdb, device), op);
+    } else {
+      console.log("No Device Selected");
     }
   };
   const saveProject = () => {
@@ -200,15 +201,14 @@ export const ProjectListContextProvider = (props: any) => {
         currentProject.id
       );
       updateDoc(ref, {
-        
         steps: currentProject.steps,
       })
         .then(() => {
           toast({
-            message:"Project Saved",
-            duration:1500,
-            position:"bottom"
-          })
+            message: "Project Saved",
+            duration: 1500,
+            position: "bottom",
+          });
         })
         .catch((err: Error) => {
           console.log(err.message);
@@ -227,8 +227,8 @@ export const ProjectListContextProvider = (props: any) => {
     summarize: summarizeProject,
     current: currentProject,
     editStep: editStep,
-    save:saveProject,
-    deleteAll:removeAll
+    save: saveProject,
+    deleteAll: removeAll,
   };
   return (
     <ProjectListContext.Provider value={context}>
