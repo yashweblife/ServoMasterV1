@@ -13,12 +13,10 @@ import {
 import { addOutline } from "ionicons/icons";
 import { useContext } from "react";
 import { DeviceListContext } from "../store/device-list-context";
-import { ProjectListContext } from "../store/project-list-context";
 import { DeviceInterface } from "../utils/utils";
 import DeviceComponent from "./DeviceComponent";
 import "./DeviceListComponent.scss";
 const DeviceListComponent: React.FC = () => {
-  const projectListContext = useContext(ProjectListContext);
   const deviceListContext = useContext(DeviceListContext);
   const [alert] = useIonAlert();
   const handleAdd = (name: string, auth: string) => {

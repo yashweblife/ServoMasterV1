@@ -20,27 +20,27 @@ import "./Tab3.scss";
 
 const Tab3: React.FC = () => {
   const userContext = useContext(UserContext);
-  const projectContext = useContext(ProjectListContext)
-  const deviceContext = useContext(DeviceListContext)
+  const projectContext = useContext(ProjectListContext);
+  const deviceContext = useContext(DeviceListContext);
   const handleLogout = () => {
     userContext?.logout();
   };
 
   const handleDeleteAccount = () => {
-    if(userContext){
-      userContext.delete()
+    if (userContext) {
+      userContext.delete();
     }
   };
-  const handleDeleteAllProjects = ()=>{
-    if(projectContext){
-      projectContext.deleteAll()
+  const handleDeleteAllProjects = () => {
+    if (projectContext) {
+      projectContext.deleteAll();
     }
-  }
-  const handleDeleteAllDevices = ()=>{
-    if(deviceContext){
-      deviceContext.deleteAll()
+  };
+  const handleDeleteAllDevices = () => {
+    if (deviceContext) {
+      deviceContext.deleteAll();
     }
-  }
+  };
   return (
     <IonPage>
       <IonHeader>
@@ -58,7 +58,11 @@ const Tab3: React.FC = () => {
               <IonLabel>Account</IonLabel>
             </IonItem>
             <IonItem lines="none" slot="content">
-              <IonButton shape="round" color="primary" onClick={handleDeleteAccount}>
+              <IonButton
+                shape="round"
+                color="primary"
+                onClick={handleDeleteAccount}
+              >
                 <IonIcon icon={trashOutline}></IonIcon>
                 <IonLabel>Delete Account</IonLabel>
               </IonButton>
@@ -73,7 +77,11 @@ const Tab3: React.FC = () => {
               <IonLabel>Projects</IonLabel>
             </IonItem>
             <IonItem lines="none" slot="content">
-              <IonButton shape="round" color="primary" onClick={handleDeleteAllProjects}>
+              <IonButton
+                shape="round"
+                color="primary"
+                onClick={handleDeleteAllProjects}
+              >
                 <IonIcon icon={trashOutline}></IonIcon>
                 <IonLabel>Delete All</IonLabel>
               </IonButton>
@@ -84,7 +92,11 @@ const Tab3: React.FC = () => {
               <IonLabel>Devices</IonLabel>
             </IonItem>
             <IonItem lines="none" slot="content">
-              <IonButton shape="round" color="primary" onClick={handleDeleteAllDevices}>
+              <IonButton
+                shape="round"
+                color="primary"
+                onClick={handleDeleteAllDevices}
+              >
                 <IonIcon icon={trashOutline}></IonIcon>
                 <IonLabel>Delete All</IonLabel>
               </IonButton>
@@ -101,7 +113,13 @@ const Tab3: React.FC = () => {
               <IonButton shape="round" color="primary">
                 <IonLabel>Projects</IonLabel>
               </IonButton>
-              <IonButton shape="round" color="primary" onClick={()=>{console.log(4)}}>
+              <IonButton
+                shape="round"
+                color="primary"
+                onClick={() => {
+                  console.log(4);
+                }}
+              >
                 <IonLabel>Steps</IonLabel>
               </IonButton>
               <IonButton shape="round" color="primary">

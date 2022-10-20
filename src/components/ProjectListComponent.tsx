@@ -9,7 +9,7 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  useIonAlert,
+  useIonAlert
 } from "@ionic/react";
 import { addOutline, listOutline } from "ionicons/icons";
 import { useContext } from "react";

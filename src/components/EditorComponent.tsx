@@ -12,11 +12,9 @@ import {
   IonSelect,
   IonSelectOption,
   IonTitle,
-  IonToolbar,
-  SelectChangeEventDetail,
+  IonToolbar
 } from "@ionic/react";
 import {
-  addOutline,
   alarmOutline,
   arrowBackOutline,
   bulbOutline,
@@ -24,9 +22,9 @@ import {
   menuOutline,
   playOutline,
   saveOutline,
-  trashOutline,
+  trashOutline
 } from "ionicons/icons";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { DeviceListContext } from "../store/device-list-context";
 import { ProjectListContext } from "../store/project-list-context";
 import { DeviceInterface, StepInterface } from "../utils/utils";

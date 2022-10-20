@@ -15,14 +15,18 @@ import { useContext, useRef } from "react";
 import { UserContext } from "../store/user-context";
 
 const SignupComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
-  const userContext = useContext(UserContext)
-  const emailRef = useRef<HTMLIonInputElement>(null)
-  const passRef = useRef<HTMLIonInputElement>(null)
-  const confRef = useRef<HTMLIonInputElement>(null)
+  const userContext = useContext(UserContext);
+  const emailRef = useRef<HTMLIonInputElement>(null);
+  const passRef = useRef<HTMLIonInputElement>(null);
+  const confRef = useRef<HTMLIonInputElement>(null);
   const handleSignup = () => {
-    if(userContext){
-      if(emailRef.current && passRef.current && confRef.current){
-        userContext.create(""+emailRef.current.value,""+ passRef.current.value,""+ confRef.current.value)
+    if (userContext) {
+      if (emailRef.current && passRef.current && confRef.current) {
+        userContext.create(
+          "" + emailRef.current.value,
+          "" + passRef.current.value,
+          "" + confRef.current.value
+        );
       }
     }
   };

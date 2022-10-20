@@ -38,13 +38,11 @@ const LoginComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
         <IonList>
           <IonItem>
             <IonLabel position="floating">Enter Username</IonLabel>
-            <IonInput type="email" ref={emailRef}>
-            </IonInput>
+            <IonInput type="email" ref={emailRef}></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Enter Password</IonLabel>
-            <IonInput type="password" ref={passRef}>
-            </IonInput>
+            <IonInput type="password" ref={passRef}></IonInput>
           </IonItem>
           <IonItem>
             <IonButtons>

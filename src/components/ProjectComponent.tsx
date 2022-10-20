@@ -5,7 +5,7 @@ import {
   IonCardHeader,
   IonIcon,
   IonTitle,
-  IonToolbar,
+  IonToolbar
 } from "@ionic/react";
 import { createOutline, playOutline, trashOutline } from "ionicons/icons";
 import { useContext } from "react";
@@ -25,9 +25,9 @@ const ProjectComponent: React.FC<{ data: ProjectInterface }> = ({ data }) => {
       projectListContext.remove(data.id);
     }
   };
-  const summarize = ()=>{
-    projectListContext?.summarize(data.id)
-  }
+  const summarize = () => {
+    projectListContext?.summarize(data.id);
+  };
   return (
     <IonCard className="projectCard">
       <IonCardHeader>
@@ -44,7 +44,12 @@ const ProjectComponent: React.FC<{ data: ProjectInterface }> = ({ data }) => {
             >
               <IonIcon icon={trashOutline}></IonIcon>
             </IonButton>
-            <IonButton fill="solid" color="primary" shape="round" onClick={summarize}>
+            <IonButton
+              fill="solid"
+              color="primary"
+              shape="round"
+              onClick={summarize}
+            >
               <IonIcon icon={playOutline}></IonIcon>
             </IonButton>
             <IonButton
