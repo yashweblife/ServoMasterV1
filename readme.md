@@ -38,7 +38,12 @@ The user curates projects on the web/app interface and sees the output on the ha
 - [X] Edit capacitor details for icon/splash/App name
 - [X] Decide on App Icon
 - [X] Ready app for android build
-
+- [ ] Add shortcuts
+    - [ ] Save Project
+    - [ ] Delete Project
+    - [ ] Add Step
+    - [ ] Add Delay
+    - [ ] Add Trigger
 
 
 ## Next Up : [src folder explaination](./src/readme.md)
