@@ -13,7 +13,11 @@ import {
 } from "@ionic/react";
 import { useContext, useRef } from "react";
 import { UserContext } from "../store/user-context";
-
+/**
+ * *Handles signup
+ * @param param0 
+ * @returns
+ */
 const SignupComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
   const userContext = useContext(UserContext);
   const emailRef = useRef<HTMLIonInputElement>(null);

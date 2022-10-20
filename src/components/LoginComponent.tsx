@@ -13,7 +13,11 @@ import {
 } from "@ionic/react";
 import { useContext, useRef } from "react";
 import { UserContext } from "../store/user-context";
-
+/**
+ * Login box for auth
+ * @param param0 Switcher,
+ * @returns 
+ */
 const LoginComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
   const emailRef = useRef<HTMLIonInputElement>(null);
   const passRef = useRef<HTMLIonInputElement>(null);

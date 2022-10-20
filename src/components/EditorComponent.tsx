@@ -30,11 +30,17 @@ import { ProjectListContext } from "../store/project-list-context";
 import { DeviceInterface, StepInterface } from "../utils/utils";
 import "./EditorComponent.scss";
 import StepComponent from "./StepComponent";
-
+/**
+ * * A place to edit projects
+ * @returns The editor component 
+ */
 const EditorComponent: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
   const deviceListContext = useContext(DeviceListContext);
   const [device, setDevice] = useState<string>("")
+  /**
+   * Return to the project list
+   */
   const toProjectList = () => {
     if (projectListContext) {
       projectListContext.close();

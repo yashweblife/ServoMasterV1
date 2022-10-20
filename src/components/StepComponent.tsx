@@ -14,7 +14,11 @@ import { useContext, useRef } from "react";
 import { ProjectListContext } from "../store/project-list-context";
 import { StepInterface } from "../utils/utils";
 import "./StepComponent.scss";
-
+/**
+ * Step Component
+ * @param param0 
+ * @returns 
+ */
 const StepComponent: React.FC<{ index: number; data: StepInterface }> = ({
   index,
   data,

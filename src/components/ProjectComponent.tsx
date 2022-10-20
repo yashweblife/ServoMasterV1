@@ -12,7 +12,11 @@ import { useContext } from "react";
 import { ProjectListContext } from "../store/project-list-context";
 import { ProjectInterface } from "../utils/utils";
 import "./ProjectComponent.scss";
-
+/**
+ * Item component for project list
+ * @param param0 
+ * @returns 
+ */
 const ProjectComponent: React.FC<{ data: ProjectInterface }> = ({ data }) => {
   const projectListContext = useContext(ProjectListContext);
   const openProject = () => {

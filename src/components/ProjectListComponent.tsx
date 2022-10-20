@@ -17,7 +17,10 @@ import { ProjectListContext } from "../store/project-list-context";
 import { makeRandString, ProjectInterface } from "../utils/utils";
 import ProjectComponent from "./ProjectComponent";
 import "./ProjectListComponent.scss";
-
+/**
+ * List of projects
+ * @returns Project list
+ */
 const ProjectListComponent: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
   const [alert] = useIonAlert();

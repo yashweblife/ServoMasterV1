@@ -16,9 +16,20 @@ import { DeviceListContext } from "../store/device-list-context";
 import { DeviceInterface } from "../utils/utils";
 import DeviceComponent from "./DeviceComponent";
 import "./DeviceListComponent.scss";
+
+
+/**
+ * A list of devices
+ * @returns Device List
+ */
 const DeviceListComponent: React.FC = () => {
   const deviceListContext = useContext(DeviceListContext);
   const [alert] = useIonAlert();
+  /**
+   * 
+   * @param name String, name of device
+   * @param auth String, Auth code
+   */
   const handleAdd = (name: string, auth: string) => {
     deviceListContext?.add(name, auth);
   };

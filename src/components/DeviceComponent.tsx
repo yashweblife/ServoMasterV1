@@ -18,9 +18,13 @@ import { useContext, useState } from "react";
 import { DeviceListContext } from "../store/device-list-context";
 import { DeviceInterface } from "../utils/utils";
 import "./DeviceComponent.scss";
+
+/**
+ * @param param0 device interface and an index
+ * @returns A device component
+ */
 const DeviceComponent: React.FC<{ data: DeviceInterface; index: number }> = ({
   data,
-  index,
 }) => {
   const deviceListContext = useContext(DeviceListContext);
   const [isShowAuth, setIsShowAuth] = useState<Boolean>(false);
@@ -32,10 +36,18 @@ const DeviceComponent: React.FC<{ data: DeviceInterface; index: number }> = ({
       setIsShowAuth(true);
     }
   };
+  /**
+   * Deletes the device
+   */
   const handleDelete = () => {
     console.log(data.id);
     deviceListContext?.remove(data.id);
   };
+  /**
+   * * Edits the device details
+   * @param name
+   * @param auth 
+   */
   const handleEdit = (name: string, auth: string) => {
     deviceListContext?.edit(data.id, name, auth);
   };
