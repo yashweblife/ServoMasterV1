@@ -39,9 +39,9 @@ The user curates projects on the web/app interface and sees the output on the ha
 - [X] Decide on App Icon
 - [X] Ready app for android build
 - [ ] Add shortcuts
-    - [ ] Save Project
+    - [X] Save Project
     - [ ] Delete Project
-    - [ ] Add Step
+    - [X] Add Step
     - [ ] Add Delay
     - [ ] Add Trigger
 

@@ -12,7 +12,8 @@ import {
   IonSelect,
   IonSelectOption,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  useIonAlert
 } from "@ionic/react";
 import {
   alarmOutline,
@@ -24,7 +25,7 @@ import {
   saveOutline,
   trashOutline
 } from "ionicons/icons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DeviceListContext } from "../store/device-list-context";
 import { ProjectListContext } from "../store/project-list-context";
 import { DeviceInterface, StepInterface } from "../utils/utils";
@@ -37,7 +38,20 @@ import StepComponent from "./StepComponent";
 const EditorComponent: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
   const deviceListContext = useContext(DeviceListContext);
+  const [alert] = useIonAlert();
   const [device, setDevice] = useState<string>("")
+  useEffect(()=>{
+    window.addEventListener("keydown",(e:KeyboardEvent)=>{
+      if(e.key === "s" && e.ctrlKey){
+        e.preventDefault();
+        saveProject();
+      }
+      if(e.key === "a" && e.ctrlKey){
+        e.preventDefault();
+        addStep()
+      }
+    })
+  },[])
   /**
    * Return to the project list
    */
@@ -56,6 +70,15 @@ const EditorComponent: React.FC = () => {
       if(device){
         console.log("Device Selected: ")
         projectListContext.summarize(projectListContext.current?.id, device);
+      }else{
+        alert({
+          header:"Select a device First",
+          buttons:[
+            {
+              text:"Accept"
+            }
+          ]
+        })
       }
     }
   };
