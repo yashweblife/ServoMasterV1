@@ -106,6 +106,12 @@ export const DeviceListContextProvider = (props: any) => {
         });
       });
   };
+  /**
+   * # Hello
+   * @param id 
+   * @param name 
+   * @param authCode 
+   */
   const edit = (id: string, name: string, authCode: string) => {
     const arr = [...list];
     const data = arr.filter((item: DeviceInterface) => item.id === id)[0];
@@ -141,3 +147,5 @@ export const DeviceListContextProvider = (props: any) => {
     </DeviceListContext.Provider>
   );
 };
+
+
