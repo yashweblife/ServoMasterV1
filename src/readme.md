@@ -3,8 +3,6 @@
 ## Explaination
 This folder contains the heart of all the functionality.
 There are four main folders that contain all the .tsx files
-
-
 ---
 ### Components [->](./components/readme.md)
 The components folder contains all the essential UI pieces that make things work
