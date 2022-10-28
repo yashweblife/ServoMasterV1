@@ -17,7 +17,10 @@ import { DeviceListContext } from "../store/device-list-context";
 import { ProjectListContext } from "../store/project-list-context";
 import { UserContext } from "../store/user-context";
 import "./Tab3.scss";
-
+/**
+ * ### Tab3 | Settings
+ * The settings page allows the user to manipulate the users account.
+ */
 const Tab3: React.FC = () => {
   const userContext = useContext(UserContext);
   const projectContext = useContext(ProjectListContext);
