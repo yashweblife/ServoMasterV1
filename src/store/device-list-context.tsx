@@ -8,14 +8,14 @@ import {
   DocumentData,
   getDocs,
   QuerySnapshot,
-  updateDoc
+  updateDoc,
 } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 import {
   auth,
   db,
   DeviceContextInterface,
-  DeviceInterface
+  DeviceInterface,
 } from "../utils/utils";
 
 export const DeviceListContext = createContext<DeviceContextInterface | null>(
@@ -108,9 +108,9 @@ export const DeviceListContextProvider = (props: any) => {
   };
   /**
    * # Hello
-   * @param id 
-   * @param name 
-   * @param authCode 
+   * @param id
+   * @param name
+   * @param authCode
    */
   const edit = (id: string, name: string, authCode: string) => {
     const arr = [...list];
@@ -147,5 +147,3 @@ export const DeviceListContextProvider = (props: any) => {
     </DeviceListContext.Provider>
   );
 };
-
-
