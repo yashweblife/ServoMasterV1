@@ -20,6 +20,13 @@ import { DeviceListContext } from "../store/device-list-context";
 import { ProjectListContext } from "../store/project-list-context";
 import "./Tab2.scss";
 
+
+/**
+ * ### Tab2 | Profile
+ * This is where the user can see their stats and add devices.
+ * There are 2 stats, the number of projects and the number of devices.
+ * @returns 
+ */
 const Tab2: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
   const deviceListContext = useContext(DeviceListContext);
