@@ -18,8 +18,8 @@
 }
 @media screen and (min-width:800px) {
     .projectCard{
-        flex:1 auto;
-        width:clamp(300px, 25%, 350px);
+        //flex:1 auto;
+        width:clamp(300px, 10%, 350px);
         >ion-card-header{
             padding:0;
             >ion-toolbar{
