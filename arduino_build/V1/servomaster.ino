@@ -72,7 +72,7 @@ int angle1 = 0;
 int delay_time = 0;
 int servo = 0;
 int step_size = 1;
-
+boolean devMode = true;
 // This funciton gets the data from firebse and stores it in the "data_from_db" variable
 
 void get_data()
@@ -344,23 +344,41 @@ void setupMaster(){
     }
 }
 void enableInputs(){
+    if(devMode){
+        Serial.println("Enebaling Inputs");
+    }
     pinMode(inp1,INPUT);
     pinMode(inp2,INPUT);
     pinMode(inp3,INPUT);
     pinMode(inp4,INPUT);
     pinMode(directionSwitcher,INPUT);
     pinMode(modeSwitcher,INPUT);
+    if(devMode){
+        Serial.println("Enabled Inputs");
+    }
 }
 void enableSerial(){
     Serial.begin(115200);
+    if(devMode){
+        Serial.println("Enabled Serial Comms");
+    }
 }
 void enableServos(){
+    if(devMode){
+        Serial.println("Enabling Servos");
+    }
     s1.attach(0, 500, 2400);
     s2.attach(14, 500, 2400);
     s3.attach(16, 500, 2400);
     s4.attach(5, 500, 2400);
+    if(devMode){
+        Serial.println("Enabled Servos");
+    }
 }
 void enableWifi(){
+    if(devMode){
+        Serial.println("Enabling Wifi");
+    }
     WiFiManager wm;
     bool res;
     res = wm.autoConnect("Servo_Master");
@@ -375,10 +393,19 @@ void enableWifi(){
     {
         Serial.print("Connection Established");
     }
+    if(devMode){
+        Serial.println("Enabled Wifi");
+    }
 }
 void enableFirebase(){
+    if(devMode){
+        Serial.println("Enabling Firebase");
+    }
     Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
     Firebase.reconnectWiFi(true);
+    if(devMode){
+        Serial.println("Enabled Firebase");
+    }
 }
 void defaultMode(){
     int s1Pos = 0;
