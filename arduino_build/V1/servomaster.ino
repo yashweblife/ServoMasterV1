@@ -61,6 +61,8 @@ int inp1 = 13;
 int inp2 = 12;
 int inp3 = 15;
 int inp4 = 2;
+int directionSwitcher = 4;
+int modeSwitcher = 9;
 // This variable will store the daabase string for this device
 String data_from_db = "";
 
@@ -305,9 +307,7 @@ void generate_parts(String a)
     }
 }
 
-void setup()
-{
-    Serial.begin(115200);
+void setupMaster(){
     Serial.println("\nInit!");
     WiFiManager wm;
     bool res;
@@ -341,6 +341,101 @@ void setup()
     while (true)
     {
         get_data();
+    }
+}
+void enableInputs(){
+    pinMode(inp1,INPUT);
+    pinMode(inp2,INPUT);
+    pinMode(inp3,INPUT);
+    pinMode(inp4,INPUT);
+    pinMode(directionSwitcher,INPUT);
+    pinMode(modeSwitcher,INPUT);
+}
+void enableSerial(){
+    Serial.begin(115200);
+}
+void enableServos(){
+    s1.attach(0, 500, 2400);
+    s2.attach(14, 500, 2400);
+    s3.attach(16, 500, 2400);
+    s4.attach(5, 500, 2400);
+}
+void enableWifi(){
+    WiFiManager wm;
+    bool res;
+    res = wm.autoConnect("Servo_Master");
+    if (!res)
+    {
+        Serial.println("Failed To Connect");
+        while(1){
+            delay(100);
+        }
+    }
+    else
+    {
+        Serial.print("Connection Established");
+    }
+}
+void enableFirebase(){
+    Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+    Firebase.reconnectWiFi(true);
+}
+void defaultMode(){
+    int s1Pos = 0;
+    int s2Pos = 0;
+    int s3Pos = 0;
+    int s4Pos = 0;
+    int direction = 1;
+    while(true){
+        if(digitalRead(directionSwitcher)){
+            direction = -direction;
+        }
+        if(digitalRead(inp1)){
+            if(s1Pos != 180){
+            s1Pos+=direction;
+            }
+        }
+        if(digitalRead(inp2)){
+            if(s2Pos !=180){
+                s2Pos+=direction;
+            }
+        }
+        if(digitalRead(inp3)){
+            if(s3Pos !=180){
+                s3Pos+=direction;
+            }
+        }
+        if(digitalRead(inp4)){
+            if(s4Pos !=180){
+                s4Pos+=direction;
+            }
+        }
+    }
+}
+void runMain(){
+    enableSerial();
+    enableInputs();
+    enableServos();
+    if(digitalRead(modeSwitcher)){
+        enableWifi();
+        enableFirebase();
+        while(true){
+            get_data();
+        }
+    }else{
+        defaultMode();
+    }
+
+}
+
+
+void setup()
+{
+    
+    if(digitalRead(9) == true){
+
+    }else{
+
     }
 }
 
