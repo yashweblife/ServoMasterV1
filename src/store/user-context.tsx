@@ -47,7 +47,7 @@ export const UserContextProvider = (props: any) => {
   const loginUser = (email: string, pass: string) => {
     signInWithEmailAndPassword(auth, email, pass)
       .then(() => {
-        console.log("Logged In");
+        //console.log("Logged In");
       })
       .catch((err: Error) => {
         alert(err.message.split("/")[1].replace("-", " "));
