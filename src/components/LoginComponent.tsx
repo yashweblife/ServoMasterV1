@@ -24,7 +24,7 @@ const LoginComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
   const userContext = useContext(UserContext);
   const handleLogin = () => {
     if (emailRef.current && passRef.current) {
-      console.log(1);
+      //console.log(1);
       userContext?.login(
         "" + emailRef.current.value,
         "" + passRef.current.value
