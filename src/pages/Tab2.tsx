@@ -30,7 +30,7 @@ import "./Tab2.scss";
 const Tab2: React.FC = () => {
   const projectListContext = useContext(ProjectListContext);
   const deviceListContext = useContext(DeviceListContext);
-  console.log(projectListContext?.size);
+  //console.log(projectListContext?.size);
   return (
     <IonPage>
       <IonHeader>
