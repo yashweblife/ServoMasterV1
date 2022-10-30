@@ -68,7 +68,7 @@ const EditorComponent: React.FC = () => {
   const summarize = () => {
     if (projectListContext) {
       if(device){
-        console.log("Device Selected: ")
+        //console.log("Device Selected: ")
         projectListContext.summarize(projectListContext.current?.id, device);
       }else{
         alert({
