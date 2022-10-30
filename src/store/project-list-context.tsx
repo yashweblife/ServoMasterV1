@@ -55,6 +55,10 @@ export const ProjectListContextProvider = (props: any) => {
     }
   };
   const add = (name: string, id: string) => {
+    if(!name){
+      toast({message:"Enter a name", duration:1000, position:"top"})
+      return;
+    }
     const ref = collection(
       db,
       "users",
@@ -67,7 +71,6 @@ export const ProjectListContextProvider = (props: any) => {
     })
       .then((data: DocumentData) => {
         if (list) {
-          console.log(name);
           const arr = [...list];
           arr.push({
             name: name,
@@ -102,7 +105,6 @@ export const ProjectListContextProvider = (props: any) => {
       );
       deleteDoc(ref)
         .then(() => {
-          console.log("Deleted " + id);
           closeProject();
         })
         .catch((err: Error) => {
@@ -163,7 +165,7 @@ export const ProjectListContextProvider = (props: any) => {
       if (type === 2) c.steps[index].delay = value;
       if (type === 3) c.steps[index].size = value;
       if (type === 4) c.steps[index].servo = value;
-      console.log(index, c.steps[index]);
+      //console.log(index, c.steps[index]);
     }
   };
   const summarizeProject = (id?: string | null, device?: string | null) => {
