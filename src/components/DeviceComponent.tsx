@@ -40,7 +40,7 @@ const DeviceComponent: React.FC<{ data: DeviceInterface; index: number }> = ({
    * Deletes the device
    */
   const handleDelete = () => {
-    console.log(data.id);
+    //console.log(data.id);
     deviceListContext?.remove(data.id);
   };
   /**
