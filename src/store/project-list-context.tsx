@@ -186,9 +186,30 @@ export const ProjectListContextProvider = (props: any) => {
     }
     if (op === "") return;
     if (device) {
-      set(ref(rtdb, device), op);
+      set(ref(rtdb, device), op).then(()=>{
+        toast({
+          message:"Running Project",duration:1500, position:"top"
+        })
+      })
     } else {
-      console.log("No Device Selected");
+      const deviceList =collection(
+        db,
+        "users",
+        "" + auth.currentUser?.uid,
+        "device_list"
+      );
+      getDocs(deviceList).then((val:QuerySnapshot)=>{
+        if(val.empty){
+          toast({message:"No Devices", duration:1000, position:"top"})
+        }else{
+          var authCode = val.docs[0].data().auth;
+          set(ref(rtdb, authCode), op).then(()=>{
+            toast({
+              message:"Running Project",duration:1500, position:"top"
+            })
+          })
+        }
+      })
     }
   };
   const saveProject = () => {
@@ -207,7 +228,7 @@ export const ProjectListContextProvider = (props: any) => {
           toast({
             message: "Project Saved",
             duration: 1500,
-            position: "bottom",
+            position: "top",
           });
         })
         .catch((err: Error) => {
