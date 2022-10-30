@@ -63,18 +63,21 @@ int inp3 = 15;
 int inp4 = 2;
 int directionSwitcher = 4;
 int modeSwitcher = 9;
-// This variable will store the daabase string for this device
+
+// This variable will store the daabase string for this device.
 String data_from_db = "";
 
-// These variables will store the data after being processed
+// These variables will store the data after being processed.
 int angle0 = 0;
 int angle1 = 0;
 int delay_time = 0;
 int servo = 0;
 int step_size = 1;
 boolean devMode = true;
-// This funciton gets the data from firebse and stores it in the "data_from_db" variable
 
+/**
+ * @brief This funciton gets the data from firebse and stores it in the "data_from_db" variable.
+*/
 void get_data()
 {
     if (Firebase.getString(fbdo, device_path))
@@ -84,7 +87,11 @@ void get_data()
         delay(100);
     }
 }
-
+/**
+ * @brief Decodes incoming string into the proper format.
+ * 
+ * @param a String from Firebase
+ */
 void decode_easy(String a)
 {
     String parts[5] = {};
@@ -109,7 +116,9 @@ void decode_easy(String a)
     servo = parts[3].toInt();
     step_size = parts[4].toInt();
 }
-
+/**
+ * @brief This function performs all the functionality.
+ */
 void process()
 {
     // Serial.println("A0: "+String(angle0)+"\nA1: "+String(angle1)+"\nDelay: "+String(delay_time)+"\nServo: "+String(servo)+"\nstep: "+String(step_size));
@@ -165,7 +174,7 @@ void process()
             delay(1);
         }
     }
-
+    
     else if (angle0 == angle1)
     {
         delay(delay_time);
@@ -250,24 +259,11 @@ void process()
     }
 }
 
-void process1()
-{
-    // First things first, check if there is a trigger code and execute it
-    if (angle0 == 360 && angle1 == 360 && delay_time == 9999 && step_size == 0)
-    {
-        bool test = true;
-        while (test)
-        {
-            if (digitalRead(servo) == HIGH)
-            {
-                test = false;
-            }
-        }
-    }
-
-    // Lets think about curating the steps in a better way, something to do it simultaneously
-}
-
+/**
+ * @brief Breaks down the string into components and performs the decode and process functions too.
+ * 
+ * @param a 
+ */
 void generate_parts(String a)
 {
     int count = 0;
@@ -306,7 +302,10 @@ void generate_parts(String a)
         process();
     }
 }
-
+/**
+ * @brief The code that should run if toggle is on.
+ * 
+ */
 void setupMaster(){
     Serial.println("\nInit!");
     WiFiManager wm;
@@ -343,6 +342,10 @@ void setupMaster(){
         get_data();
     }
 }
+/**
+ * @brief Enable Inputs from a function.
+ * 
+ */
 void enableInputs(){
     if(devMode){
         Serial.println("Enebaling Inputs");
@@ -357,12 +360,20 @@ void enableInputs(){
         Serial.println("Enabled Inputs");
     }
 }
+/**
+ * @brief Enable Serial from a function.
+ * 
+ */
 void enableSerial(){
     Serial.begin(115200);
     if(devMode){
         Serial.println("Enabled Serial Comms");
     }
 }
+/**
+ * @brief Enable Servos from a function.
+ * 
+ */
 void enableServos(){
     if(devMode){
         Serial.println("Enabling Servos");
@@ -375,6 +386,10 @@ void enableServos(){
         Serial.println("Enabled Servos");
     }
 }
+/**
+ * @brief Enable Wifi from a function.
+ * 
+ */
 void enableWifi(){
     if(devMode){
         Serial.println("Enabling Wifi");
@@ -397,6 +412,10 @@ void enableWifi(){
         Serial.println("Enabled Wifi");
     }
 }
+/**
+ * @brief Enable Firebase from a function.
+ * 
+ */
 void enableFirebase(){
     if(devMode){
         Serial.println("Enabling Firebase");
@@ -407,6 +426,10 @@ void enableFirebase(){
         Serial.println("Enabled Firebase");
     }
 }
+/**
+ * @brief This runs the manual mode of the project.
+ * 
+ */
 void defaultMode(){
     int s1Pos = 0;
     int s2Pos = 0;
@@ -458,7 +481,6 @@ void runMain(){
 
 void setup()
 {
-    
     if(digitalRead(9) == true){
 
     }else{
