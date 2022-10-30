@@ -120,7 +120,7 @@ const Tab3: React.FC = () => {
                 shape="round"
                 color="primary"
                 onClick={() => {
-                  console.log(4);
+                  //console.log(4);
                 }}
               >
                 <IonLabel>Steps</IonLabel>
