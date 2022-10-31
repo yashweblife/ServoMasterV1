@@ -34,6 +34,20 @@ export const DeviceListContextProvider = (props: any) => {
     });
   }, []);
   const add = (name: string, authCode: string) => {
+    if(name.length === 0){
+      alert({
+        message:"Enter a name",
+        buttons:[{text:"Confirm"}]
+      })
+      return;
+    }
+    if(authCode.length === 0){
+      alert({
+        message:"Enter your auth token",
+        buttons:[{text:"Confirm"}]
+      })
+      return;
+    }
     if (auth.currentUser) {
       const ref = collection(db, "users", auth.currentUser.uid, "device_list");
       addDoc(ref, {
@@ -79,7 +93,9 @@ export const DeviceListContextProvider = (props: any) => {
     if (auth.currentUser) {
       const ref = doc(db, "users", auth.currentUser.uid, "device_list", id);
       deleteDoc(ref)
-        .then(() => {})
+        .then(() => {
+          toast({message:`Deleted Device`,duration:1500, position:"top"})
+        })
         .catch((err: Error) => {
           alert(err.message);
         });
