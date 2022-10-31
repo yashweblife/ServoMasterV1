@@ -17,8 +17,8 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const rtdb = getDatabase(app)
 /**
- * * Returns a random string of specified size with default size of 10
- * @param  {number=10} size
+ * #### Returns a random string of specified size with default size of 10
+ * @param  size number=10
  * @returns string
  */
 export const makeRandString = (size: number = 10): string => {
@@ -30,6 +30,7 @@ export const makeRandString = (size: number = 10): string => {
   return op;
 };
 /**
+ * ## Step Interface
  * * angle_start : number
  * * angle_end : number
  * * delay : number
@@ -49,6 +50,7 @@ export interface StepInterface {
 }
 
 /**
+ * ### Project Interface
  * * name : string
  * * steps : StepInterface[]
  * * id : string
@@ -59,7 +61,7 @@ export interface ProjectInterface {
   id: string;
 }
 /**
- * * Returns a zero value step
+ * #### Returns a zero value step
  * @returns StepInterface
  */
 export function createStep(): StepInterface {
@@ -75,6 +77,7 @@ export function createStep(): StepInterface {
 }
 
 /**
+ * ### Project List Interface
  * * list: ProjectInterface[] | null;
  * * size:number | null
  * * add: (name: string, id: string) => void;
@@ -107,6 +110,7 @@ export interface ProjectListInterface {
  * * name: string;
  * * auth: string;
  * * id: string;
+ * 
  */
 export interface DeviceInterface {
   name: string;
