@@ -36,6 +36,7 @@ import "./theme/variables.css";
 import { useContext } from "react";
 import { UserContext } from "./store/user-context";
 import LoginPage from "./pages/LoginPage";
+import TutorialsPage from "./pages/TutorialsPage";
 
 setupIonicReact();
 
