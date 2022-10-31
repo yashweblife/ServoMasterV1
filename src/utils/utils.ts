@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getDatabase } from "firebase/database"
+import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyD5bEzobmbOhp0ABY3hMpftthLC7UdDyb0",
   authDomain: "servomasterdev.firebaseapp.com",
@@ -15,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const rtdb = getDatabase(app)
+export const rtdb = getDatabase(app);
 /**
  * #### Returns a random string of specified size with default size of 10
  * @param  size number=10
@@ -99,18 +99,18 @@ export interface ProjectListInterface {
   close: () => void;
   addStep: () => void;
   removeStep: (index: number) => void;
-  summarize: (id?:string|null, device?:string|null) => void;
-  save:()=>void
+  summarize: (id?: string | null, device?: string | null) => void;
+  save: () => void;
   current: ProjectInterface | null;
   editStep: (index: number, type: number, value: any) => void;
-  deleteAll:()=>void
+  deleteAll: () => void;
 }
 
 /**
  * * name: string;
  * * auth: string;
  * * id: string;
- * 
+ *
  */
 export interface DeviceInterface {
   name: string;
@@ -131,5 +131,5 @@ export interface DeviceContextInterface {
   add: (name: string, auth: string) => void;
   remove: (id: string) => void;
   edit: (id: string, name: string, auth: string) => void;
-  deleteAll:()=>void
+  deleteAll: () => void;
 }
