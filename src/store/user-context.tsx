@@ -45,6 +45,20 @@ export const UserContextProvider = (props: any) => {
   }, []);
 
   const loginUser = (email: string, pass: string) => {
+    if(email.length<5){
+      alert({
+        header:"Enter a valid email",
+        buttons:[{text:"Confirm"}]
+      });
+      return;
+    }
+    if(pass.length<8){
+      alert({
+        header:"Password length must be greater than 8",
+        buttons:[{text:"Confirm"}]
+      });
+      return;
+    }
     signInWithEmailAndPassword(auth, email, pass)
       .then(() => {
         //console.log("Logged In");
