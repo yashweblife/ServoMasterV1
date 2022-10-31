@@ -16,15 +16,19 @@ import { UserContext } from "../store/user-context";
 /**
  * Login box for auth
  * @param param0 Switcher,
- * @returns 
+ * @returns
  */
 const LoginComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
   const emailRef = useRef<HTMLIonInputElement>(null);
   const passRef = useRef<HTMLIonInputElement>(null);
   const userContext = useContext(UserContext);
   const handleLogin = () => {
-    if (emailRef.current && passRef.current) {
-      //console.log(1);
+    if (
+      emailRef.current &&
+      emailRef.current.value &&
+      passRef.current &&
+      passRef.current.value
+    ) {
       userContext?.login(
         "" + emailRef.current.value,
         "" + passRef.current.value
