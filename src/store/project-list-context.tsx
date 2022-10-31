@@ -54,9 +54,9 @@ export const ProjectListContextProvider = (props: any) => {
       });
     }
   };
-  const add = (name: string, id: string) => {
-    if(!name){
-      toast({message:"Enter a name", duration:1000, position:"top"})
+  const add = (name: string) => {
+    if(!name || name.length === 0){
+      toast({message:"Enter a valid name", duration:1000, position:"top"})
       return;
     }
     const ref = collection(
@@ -174,9 +174,11 @@ export const ProjectListContextProvider = (props: any) => {
       if (list) {
         const arr = [...list];
         const val = arr.filter((item: ProjectInterface) => item.id === id)[0];
-        val.steps.forEach((item) => {
-          op += `${item.angle_end},${item.angle_start},${item.delay},${item.servo},${item.size}|`;
-        });
+        if(val.steps.length !== 0){
+          val.steps.forEach((item) => {
+            op += `${item.angle_end},${item.angle_start},${item.delay},${item.servo},${item.size}|`;
+          });
+        }
       }
     } else {
       if (currentProject) {
