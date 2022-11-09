@@ -40,7 +40,8 @@ const DeviceListComponent: React.FC = () => {
           <IonTitle slot="start">Devices</IonTitle>
           <IonButton
             slot="end"
-            fill="clear"
+            fill="solid"
+            shape="round"
             onClick={() => {
               alert({
                 header: "Add A Device",
@@ -66,7 +67,7 @@ const DeviceListComponent: React.FC = () => {
               });
             }}
           >
-            <IonIcon icon={addOutline}></IonIcon>
+            <IonIcon color="dark" icon={addOutline}></IonIcon>
           </IonButton>
         </IonToolbar>
       </IonCardHeader>
