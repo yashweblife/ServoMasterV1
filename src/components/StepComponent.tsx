@@ -50,48 +50,52 @@ const StepComponent: React.FC<{ index: number; data: StepInterface }> = ({
       </IonItem>
       <IonItem slot="content" lines="none">
         <IonList>
-          <div>
+          <div className="range">
             <IonLabel>Start</IonLabel>
             <IonRange
               min={0}
               max={180}
               value={data.angle_start}
+              pin={true}
               ref={startRange}
               onIonChange={({ detail }) => {
                 projectListContext?.editStep(index, 0, detail.value);
               }}
             ></IonRange>
           </div>
-          <div>
+          <div className="range">
             <IonLabel>End</IonLabel>
             <IonRange
               min={0}
               max={180}
               value={data.angle_end}
+              pin={true}
               ref={endRange}
               onIonChange={({ detail }) => {
                 projectListContext?.editStep(index, 1, detail.value);
               }}
             ></IonRange>
           </div>
-          <div>
+          <div className="range">
             <IonLabel>Delay</IonLabel>
             <IonRange
               min={0}
               max={180}
               value={data.delay}
+              pin={true}
               ref={delayRange}
               onIonChange={({ detail }) => {
                 projectListContext?.editStep(index, 2, detail.value);
               }}
             ></IonRange>
           </div>
-          <div>
+          <div className="range">
             <IonLabel>Speed</IonLabel>
             <IonRange
               min={0}
               max={180}
               value={data.size}
+              pin={true}
               ref={speedRange}
               onIonChange={({ detail }) => {
                 projectListContext?.editStep(index, 3, detail.value);
