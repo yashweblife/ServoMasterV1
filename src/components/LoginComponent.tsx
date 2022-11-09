@@ -54,10 +54,10 @@ const LoginComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
           </IonItem>
           <IonItem>
             <IonButtons>
-              <IonButton fill="solid" color="primary" onClick={handleLogin}>
+              <IonButton shape="round" fill="solid" color="primary" onClick={handleLogin}>
                 Enter
               </IonButton>
-              <IonButton fill="solid" color="primary" onClick={switcher}>
+              <IonButton fill="solid" shape="round" color="primary" onClick={switcher}>
                 Create An Account
               </IonButton>
             </IonButtons>
