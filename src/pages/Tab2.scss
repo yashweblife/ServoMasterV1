@@ -1,22 +1,23 @@
-.progressCard{
-    width:50%;
-    border-radius: 2em;
-    box-shadow: 0 0 2em 0 rgba(0,0,0,0.5);
+.progressCard {
+  width: 50%;
+  border-radius: 2em;
+  box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.5);
 }
 
-.centerMessage{
-    width:100%;
-    height:100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.5;
+.centerMessage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
 }
 
-@media screen and (min-width:800px) {
-    .progressItem{
-        width:50%;
-    }
-    .progressCard{
-    }
+@media screen and (min-width: 800px) {
+  .progressItem {
+    width: 50%;
+  }
+  .progressCard {
+    width: clamp(250px, 15vw, 300px);
+  }
 }

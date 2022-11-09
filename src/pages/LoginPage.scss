@@ -15,6 +15,15 @@
       margin-right: auto;
       min-width: 300px;
       width: clamp(300px, 50%, 400px);
+      border-radius: 3em;
+      ion-buttons{
+        display:flex;
+        align-items: center;
+        width:100%;
+        ion-button{
+          width:100%;
+        }
+      }
     }
   }
 }
