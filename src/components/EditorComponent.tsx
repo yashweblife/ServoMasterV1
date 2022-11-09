@@ -117,7 +117,7 @@ const EditorComponent: React.FC = () => {
             <IonTitle slot="start">
               {projectListContext && projectListContext.current?.name}
             </IonTitle>
-            <IonSelect placeholder="Select A Device" slot="end" onIonChange={(e:any)=>{setDevice(e.detail.value)}}>
+            <IonSelect placeholder="Select A Device" interface="popover" slot="end" onIonChange={(e:any)=>{setDevice(e.detail.value)}}>
               {deviceListContext &&
                 deviceListContext.list.map((item: DeviceInterface, index:number) => (
                   <IonSelectOption value={item.auth} key={index}>
