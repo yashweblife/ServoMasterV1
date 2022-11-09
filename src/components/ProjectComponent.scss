@@ -7,6 +7,9 @@
         padding:0;
         >ion-toolbar{
             padding-right: 1em;
+            >ion-title{
+                width:200px;
+            }
             >ion-buttons{
                 >ion-button{
                     aspect-ratio: 1/1;
@@ -19,7 +22,7 @@
 @media screen and (min-width:800px) {
     .projectCard{
         //flex:1 auto;
-        width:clamp(300px, 10%, 350px);
+        width:clamp(300px, 25%, 450px);
         >ion-card-header{
             padding:0;
             >ion-toolbar{
