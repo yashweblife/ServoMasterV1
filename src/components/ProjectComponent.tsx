@@ -41,7 +41,7 @@ const ProjectComponent: React.FC<{ data: ProjectInterface }> = ({ data }) => {
     <IonCard className="projectCard">
       <IonCardHeader>
         <IonToolbar>
-          <IonTitle size="small" slot="start">
+          <IonTitle size="small">
             {data.name}
           </IonTitle>
           <IonButtons slot="end">
