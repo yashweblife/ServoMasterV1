@@ -8,13 +8,13 @@
         }
         >ion-list{
             width: 100%;
-            >div{
-                display: flex;
+            >div.range{
+                display: grid;
+                grid-template-columns: 2fr 8fr;
                 align-items: center;
+                justify-content: center;
                 width: 100%;
-                >ion-label{
-                    padding:0;
-                }
+                padding-right:1em;
                 >ion-segment{
                     padding:0;
                     display: flex;
@@ -25,9 +25,28 @@
                     }
                 }
             }
+            
+        }
+        ion-range::part(pin){
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #50FFC0;
+            color:rgb(0,0,0);
+            border-radius: 50%;
+            //top:0px;
+            z-index: 100;
+            transform: scale(1.01);
+            min-width: 28px;
+            height:28px;
+            box-shadow: 0 0 1em 0 #50FFC0;
+        }
+        ion-range::part(pin)::before{
+            content:none;
         }
     }
 }
+
 
 @media screen and (min-width:800px) {
     .stepContainer{
