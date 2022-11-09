@@ -104,6 +104,7 @@ export interface ProjectListInterface {
   current: ProjectInterface | null;
   editStep: (index: number, type: number, value: any) => void;
   deleteAll: () => void;
+  share:(id:string, email:string)=>void;
 }
 
 /**
