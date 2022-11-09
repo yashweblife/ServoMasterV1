@@ -7,9 +7,12 @@ import {
   deleteDoc,
   doc,
   DocumentData,
+  getDoc,
   getDocs,
+  query,
   QuerySnapshot,
   updateDoc,
+  where,
 } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 import {
@@ -240,6 +243,29 @@ export const ProjectListContextProvider = (props: any) => {
         });
     }
   };
+  const shareProject = (id:string, email:string)=>{
+    const pref = doc(db, 'users', "" + auth.currentUser?.uid, "project_list", id)
+    getDoc(pref).then((snap:DocumentData)=>{
+      if(snap){
+        const output = {
+          name:snap.data().name,
+          steps:snap.data().steps
+        }
+        const uref = collection(db,"users")
+        const que = query(uref, where("email","==",email))
+        getDocs(que).then((users:DocumentData)=>{
+          if(users.docs.length === 0){
+            toast({message:"User doesn't exist", duration:1500, position:"top"})
+            return;
+          }
+          const finalRef = collection(db,"users",users.docs[0].id,"project_list")
+          addDoc(finalRef,output).then(()=>{
+            toast({message:"Project Sent", duration:1500, position:"top"})
+          })
+        })
+      }
+    })
+  }
   const context: ProjectListInterface = {
     list: list,
     size: list.length,
@@ -254,6 +280,7 @@ export const ProjectListContextProvider = (props: any) => {
     editStep: editStep,
     save: saveProject,
     deleteAll: removeAll,
+    share:shareProject
   };
   return (
     <ProjectListContext.Provider value={context}>
