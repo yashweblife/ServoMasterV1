@@ -57,10 +57,10 @@ const SignupComponent: React.FC<{ switcher: () => void }> = ({ switcher }) => {
           </IonItem>
           <IonItem>
             <IonButtons>
-              <IonButton fill="solid" color="primary" onClick={handleSignup}>
+              <IonButton shape="round" fill="solid" color="primary" onClick={handleSignup}>
                 Enter
               </IonButton>
-              <IonButton fill="solid" color="primary" onClick={switcher}>
+              <IonButton shape="round" fill="solid" color="primary" onClick={switcher}>
                 Login Instead
               </IonButton>
             </IonButtons>
