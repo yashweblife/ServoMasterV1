@@ -4,13 +4,13 @@ This page contains all the global contexts for this app
 ## Workflow
 - [X] Add project list context
     - [X] Make static system
-    - [ ] Impliment Firebase 
+    - [X] Impliment Firebase 
 - [X] Add device list context
     - [X] Make static system
-    - [ ] Impliment Firebase 
-- [ ] Add user context
+    - [X] Impliment Firebase 
+- [X] Add user context
     - [X] Make static system
-    - [ ] Impliment Firebase 
+    - [X] Impliment Firebase 
 
 ## Project List Context
 This context is for the project list.

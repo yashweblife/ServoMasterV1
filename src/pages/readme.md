@@ -32,3 +32,5 @@ Tab3 contains the app settings. Here the user can logout, delete account, delete
     - [X] Tab3
         - [X] Component Breakdown
         - [X] Add Style
+    - [ ] LoginPage
+    - [ ] TutorialPage

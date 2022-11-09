@@ -6,8 +6,8 @@ This contains to editor view
 - [X] Add Style [->](./EditorComponent.scss)
 - [X] Make Adding steps function
 - [X] Make Delete step function
-- [ ] Make Upload function
-- [ ] Make Save function
+- [X] Make Upload function
+- [X] Make Save function
 - [X] Make Delete function
 - [X] Make delete step function
 ### StepComponent [->](./StepComponent.tsx)
@@ -20,13 +20,13 @@ This contains the project list view
 - [X] Add Style [->](./ProjectListComponent.scss)
 - [X] Make Add Project function
 - [X] Make Delete Project function
-- [ ] Make Upload Project function
+- [X] Make Upload Project function
 - [X] Make Open In Editor function
 ### ProjectComponent [->](./ProjectComponent.tsx)
 This is a project card
 - [X] Add Style [->](./ProjectComponent.scss)
 - [X] Add delete handler
-- [ ] Add upload handler
+- [X] Add upload handler
 - [X] Add Open In Editor handler
 ---
 
